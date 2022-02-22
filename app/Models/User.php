@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class User extends Authenticatable
 {
@@ -46,8 +47,8 @@ class User extends Authenticatable
         return $this->hasOne(Candidat::class, 'user_id');
     }
 
-    public function role() {
-        return $this->hasOne(Role::class, 'user_id')->with(['profil']);
+    public function profil() {
+        return $this->belongsTo(Profil::class);
     }
 
     public function CollaborateurByIgg($user,$igg) {
@@ -62,7 +63,11 @@ class User extends Authenticatable
         if($this->is_admin) {
             return "Administrateur";
         }
-        return $this->role->profil->name ?? "Non défini";
+        return $this->profil->name ?? "Non défini";
+    }
+
+    public function getIsAdminAttribute() {
+        return $this->fields['is_admin'] || ($this->profil && $this->profil->id == 3);
     }
 
     public function getNomCompletAttribute() {
@@ -79,12 +84,5 @@ class User extends Authenticatable
         }
         $profils = Profil::whereNotIn('id',$profil_ids)->get();
         return $profils;
-    }
-
-    public function getPhotoAttribute() {
-        if(isset($this->collaborateur) && isset($this->collaborateur->photo)) {
-            return env("CENTRALISATION_LINK", "https://total-workspace-sn.com/") . $this->collaborateur->photo;
-        }
-        return null;
     }
 }

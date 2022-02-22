@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <footer class="main-footer shadow-sm border-0 text-right">
-                Conditions générales d'utilisation &copy; TotalEnergies Sénégal
+                Conditions générales d'utilisation &copy; FormaRecrut - Jobs <img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" class="img-size-64">
             </footer>
         </div>
         <!-- ./wrapper -->

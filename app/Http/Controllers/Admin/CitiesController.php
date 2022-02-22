@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Action;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ActionsController extends Controller
+class CitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,6 @@ class ActionsController extends Controller
     public function index()
     {
         //
-        $actions = Action::with('user')
-                        ->orderBy('created_at', 'desc')
-                        ->paginate(500);
-        return view('admin.actions.index', compact('actions'));
     }
 
     /**

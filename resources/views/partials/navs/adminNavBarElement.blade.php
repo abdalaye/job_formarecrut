@@ -3,7 +3,7 @@
     <!-- Left navbar links -->
     <div class="site_info">
         <h1 class="h6 ml-2 font-weight-bold m-0 text-primary d-flex align-items-center">
-          <span class="d-lg-none d-md-none mr-1"><img src="{{ asset('img/logo.png') }}" alt="Total SN" height="29" class="brand-image mr-2"> | </span>
+          <span class="d-lg-none d-md-none mr-1"><img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" height="29" class="brand-image mr-2"> | </span>
           {{ env("APP_NAME") }}
         </h1>
     </div>

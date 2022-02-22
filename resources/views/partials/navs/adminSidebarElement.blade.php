@@ -9,8 +9,8 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
 <aside class="main-sidebar text-sm elevation-1 sidebar-light-primary">
     <!-- Brand Logo -->
     <a href="#" class="brand-link bg-white">
-        <img src="{{ asset('img/logo.png') }}" alt="Total SN" class="brand-image">
-        {{-- <span class="brand-text font-weight-light">Total SN</span> --}}
+        <img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" class="brand-image">
+        {{-- <span class="brand-text font-weight-light">FormaRecrut</span> --}}
     </a>
 
     <!-- Sidebar -->
@@ -41,10 +41,10 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('documents.create') }}" class="nav-link btn-warning">
+                    <a href="#" class="nav-link btn-warning">
                         <i class="nav-icon fas fa-plus-circle"></i>
                         <p>
-                            Nouveau document
+                            Catalogue candidat
                         </p>
                     </a>
                 </li>

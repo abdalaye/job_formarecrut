@@ -46,12 +46,12 @@ class MenusController extends Controller
                     "items" => [
                         [
                             "name" => "Actifs",
-                            "route" => "admin.recruteurs.actifs",
+                            "route" => "admin.entreprises.actifs",
                             // "variableCount" => "_nombre_brouillons_menu",
                         ],
                         [
                             "name" => "Inactifs",
-                            "route" => "admin.recruteurs.inactifs",
+                            "route" => "admin.entreprises.inactifs",
                             // "variableCount" => "_nombre_soumis_menu",
                         ]
                     ]
@@ -74,31 +74,6 @@ class MenusController extends Controller
                             // "variableCount" => "_nombre_soumis_menu",
                         ]
                     ]
-                ],
-                [
-                    "name" => "Tous les utilisateurs",
-                    "fa" => "fa-users",
-                    "refs" => ["documents"],
-                    "items" => [
-                        [
-                            "name" => "En traitement",
-                            "route" => "admin.documents.traitements"
-                        ],
-                        [
-                            "name" => "Clôturés",
-                            "route" => "admin.documents.clotures"
-                        ],
-                    ]
-                ],
-                [
-                    "name" => "Collaborateurs",
-                    "fa" => "fa-users",
-                    "url" => "/admin/users",
-                ],
-                [
-                    "name" => "Statistiques",
-                    "fa" => "fa-chart-line",
-                    "url" => "/admin/statistiques",
                 ],
                 [
                     "name" => "Configurations",

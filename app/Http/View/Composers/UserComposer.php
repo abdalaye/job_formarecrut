@@ -2,7 +2,6 @@
 namespace App\Http\View\Composers;
 
 use App\Http\Controllers\Admin\MenusController;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -36,22 +35,6 @@ class UserComposer {
                 // '_document_tranmis' => self::getDocumentsByStatutByCollaborateur(3,3), //approuve 3, transmis 3 (validation_statut)
             ]);
         }
-    }
-
-    public static function getDocumentsByStatutByCollaborateur ($statut,$statut_validation = null, $params = []){
-        if(Auth::check()){
-            $user = Auth::user();
-        }
-        return null;
-    }
-
-    public static function getValidationByStatutByCollaborateur($statut_validation, $collaborateur = null, $params= false){
-        if(!$collaborateur){
-        }
-
-
-        return null;
-
     }
 
 }
