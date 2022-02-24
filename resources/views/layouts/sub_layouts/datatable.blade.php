@@ -7,7 +7,7 @@
                 <div class="row">
                     @yield('cardHeader')
                     <div class="col-md-12">
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="tableContainer">
                             <table class="table table-striped table-hover table-sm table-borderless" id="{{ isset($id) ? $id : 'datatable' }}" width="100%">
                                 <thead>
                                     @yield('tableHeader')

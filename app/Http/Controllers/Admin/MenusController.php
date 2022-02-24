@@ -83,11 +83,11 @@ class MenusController extends Controller
                     "items" => [
                         [
                             "name" => "Pays",
-                            "url" => "admin.countries.index"
+                            "route" => "admin.countries.index"
                         ],
                         [
                             "name" => "Villes",
-                            "url" => "admin.cities.index"
+                            "route" => "admin.cities.index"
                         ],
                         [
                             "name" => "Secteurs",
@@ -95,23 +95,23 @@ class MenusController extends Controller
                         ],
                         [
                             "name" => "Niveaux études",
-                            "url" => "admin.niveau_etudes.index"
+                            "route" => "admin.niveau_etudes.index"
                         ],
                         [
                             "name" => "Niveaux langues",
-                            "url" => "admin.niveau_langues.index"
+                            "route" => "admin.niveau_langues.index"
                         ],
                         [
                             "name" => "Niveaux compétences",
-                            "url" => "admin.niveau_competences.index"
+                            "route" => "admin.niveau_competences.index"
                         ],
                         [
                             "name" => "Type contrats",
-                            "url" => "admin.type_contrats.index"
+                            "route" => "admin.type_contrats.index"
                         ],
                         [
                             "name" => "Abonnements",
-                            "url" => "admin.abonnements.index"
+                            "route" => "admin.abonnements.index"
                         ],
                     ]
                 ],

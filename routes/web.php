@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource("cities", App\Http\Controllers\Admin\CitiesController::class);
             Route::resource("secteurs", App\Http\Controllers\Admin\SecteursController::class);
             Route::resource("niveau_langues", App\Http\Controllers\Admin\NiveauLanguesController::class);
+            Route::resource("niveau_etudes", App\Http\Controllers\Admin\NiveauEtudesController::class);
             Route::resource("niveau_competences", App\Http\Controllers\Admin\NiveauCompetencesController::class);
             Route::resource("type_contrats", App\Http\Controllers\Admin\TypeContratsController::class);
             Route::resource("abonnements", App\Http\Controllers\Admin\AbonnementsController::class);
