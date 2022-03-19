@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GenericListRequest;
+use App\Models\NiveauCompetence;
 use Illuminate\Http\Request;
 
 class NiveauCompetencesController extends Controller
@@ -14,17 +16,11 @@ class NiveauCompetencesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $partial = request()->query("partial");
+        $niveau_competences = NiveauCompetence::orderByDesc('created_at')->get()->all();
+        $niveauCompetence = new NiveauCompetence(['statut' => true]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view("admin.niveau_competences.index", compact("niveau_competences", "niveauCompetence"));
     }
 
     /**
@@ -33,9 +29,13 @@ class NiveauCompetencesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericListRequest $request)
     {
-        //
+        $data = $request->validated();
+        $niveauCompetence = new NiveauCompetence($data);
+
+        return $niveauCompetence->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -67,9 +67,11 @@ class NiveauCompetencesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenericListRequest $request, NiveauCompetence $niveauCompetence)
     {
-        //
+        $data = $request->validated();
+        return $niveauCompetence->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +80,9 @@ class NiveauCompetencesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NiveauCompetence $niveauCompetence)
     {
-        //
+        return $niveauCompetence->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }

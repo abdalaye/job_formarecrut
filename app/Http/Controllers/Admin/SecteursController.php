@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GenericListRequest;
+use App\Models\Secteur;
 use Illuminate\Http\Request;
 
 class SecteursController extends Controller
@@ -14,17 +16,10 @@ class SecteursController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $secteurs = Secteur::orderByDesc('created_at')->get()->all();
+        $secteur = new Secteur(['statut' => true]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view("admin.secteurs.index", compact("secteurs", "secteur"));
     }
 
     /**
@@ -33,9 +28,13 @@ class SecteursController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericListRequest $request)
     {
-        //
+        $data = $request->validated();
+        $secteur = new Secteur($data);
+
+        return $secteur->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -67,9 +66,11 @@ class SecteursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenericListRequest $request, Secteur $secteur)
     {
-        //
+        $data = $request->validated();
+        return $secteur->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +79,9 @@ class SecteursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Secteur $secteur)
     {
-        //
+        return $secteur->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }

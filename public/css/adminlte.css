@@ -43506,17 +43506,15 @@ a.text-muted:hover {
   background-color: rgba(54, 123, 190, 0.12);
   border-radius: 5px !important;
 }
-.dataTables_wrapper .table-hover tbody tr:hover {
-  background-color: #367BBE;
+.dataTables_wrapper .table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(253, 215, 23, 0.08);
 }
-.dataTables_wrapper .table-hover tbody tr:hover td {
-  color: white;
+.dataTables_wrapper .table-striped tbody tr {
+  transition: all 0.3s;
+  z-index: 100;
 }
-.dataTables_wrapper .table-hover tbody tr:hover .btn {
-  background: white !important;
-}
-.dataTables_wrapper .table-hover tbody tr:hover .btn i {
-  color: #367BBE !important;
+.dataTables_wrapper .table-striped tbody tr:hover {
+  transform: scaleX(1.01);
 }
 .dataTables_wrapper .dataTables_length {
   margin-top: -40px;

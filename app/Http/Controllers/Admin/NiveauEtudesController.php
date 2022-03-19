@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GenericListRequest;
+use App\Models\NiveauEtude;
 use Illuminate\Http\Request;
 
 class NiveauEtudesController extends Controller
@@ -14,17 +16,11 @@ class NiveauEtudesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $partial = request()->query("partial");
+        $niveau_etudes = NiveauEtude::orderByDesc('created_at')->get()->all();
+        $niveauEtude = new NiveauEtude(['statut' => true]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view("admin.niveau_etudes.index", compact("niveau_etudes", "niveauEtude"));
     }
 
     /**
@@ -33,9 +29,13 @@ class NiveauEtudesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericListRequest $request)
     {
-        //
+        $data = $request->validated();
+        $niveauEtude = new NiveauEtude($data);
+
+        return $niveauEtude->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -67,9 +67,11 @@ class NiveauEtudesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenericListRequest $request, NiveauEtude $niveauEtude)
     {
-        //
+        $data = $request->validated();
+        return $niveauEtude->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +80,9 @@ class NiveauEtudesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NiveauEtude $niveauEtude)
     {
-        //
+        return $niveauEtude->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }

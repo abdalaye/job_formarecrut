@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GenericListRequest;
+use App\Models\NiveauLangue;
 use Illuminate\Http\Request;
 
 class NiveauLanguesController extends Controller
@@ -14,17 +16,11 @@ class NiveauLanguesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $partial = request()->query("partial");
+        $niveau_langues = NiveauLangue::orderByDesc('created_at')->get()->all();
+        $niveauLangue = new NiveauLangue(['statut' => true]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view("admin.niveau_langues.index", compact("niveau_langues", "niveauLangue"));
     }
 
     /**
@@ -33,9 +29,13 @@ class NiveauLanguesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericListRequest $request)
     {
-        //
+        $data = $request->validated();
+        $niveauLangue = new NiveauLangue($data);
+
+        return $niveauLangue->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -67,9 +67,11 @@ class NiveauLanguesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenericListRequest $request, NiveauLangue $niveauLangue)
     {
-        //
+        $data = $request->validated();
+        return $niveauLangue->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +80,9 @@ class NiveauLanguesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NiveauLangue $niveauLangue)
     {
-        //
+        return $niveauLangue->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }

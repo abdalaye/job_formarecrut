@@ -1,4 +1,4 @@
-<select name="{{ $name }}" id="{{ isset($id) ? $id : $name }}" class="{{ isset($class) ? $class : 'form-control select' }}  @error($name) is-invalid @enderror" {{ isset($required) ? 'required' : '' }}  {{ isset($multiple) ? 'multiple' : '' }}>
+<select name="{{ $name }}" id="{{ isset($id) ? $id : $name }}" class="{{ isset($class) ? $class : 'form-control' }}  @error($name) is-invalid @enderror" {{ isset($required) ? 'required' : '' }}  {{ isset($multiple) ? 'multiple' : '' }}>
     @if (isset($empty) && $empty)
         <option value selected>{{ $empty }}</option>
     @endif

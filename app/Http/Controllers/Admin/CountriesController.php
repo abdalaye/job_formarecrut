@@ -20,7 +20,7 @@ class CountriesController extends Controller
         $countries = Country::orderByDesc('created_at')->get()->all();
         $country = new Country(['statut' => true]);
 
-        return view(isset($partial) && $partial ? "admin.countries._table" : "admin.countries.index", compact("countries", "country"));
+        return view("admin.countries.index", compact("countries", "country"));
     }
 
     /**

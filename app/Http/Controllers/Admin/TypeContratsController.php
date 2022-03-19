@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GenericListRequest;
+use App\Models\TypeContrat;
 use Illuminate\Http\Request;
 
 class TypeContratsController extends Controller
@@ -14,17 +16,11 @@ class TypeContratsController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $partial = request()->query("partial");
+        $type_contrats = TypeContrat::orderByDesc('created_at')->get()->all();
+        $typeContrat = new TypeContrat(['statut' => true]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view("admin.type_contrats.index", compact("type_contrats", "typeContrat"));
     }
 
     /**
@@ -33,9 +29,13 @@ class TypeContratsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericListRequest $request)
     {
-        //
+        $data = $request->validated();
+        $typeContrat = new TypeContrat($data);
+
+        return $typeContrat->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -67,9 +67,11 @@ class TypeContratsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenericListRequest $request, TypeContrat $typeContrat)
     {
-        //
+        $data = $request->validated();
+        return $typeContrat->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +80,9 @@ class TypeContratsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TypeContrat $typeContrat)
     {
-        //
+        return $typeContrat->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }
