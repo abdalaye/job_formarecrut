@@ -5,7 +5,8 @@
 .main-header {
   border-bottom: $main-header-bottom-border;
   z-index: $zindex-main-header;
-  background: radial-gradient(rgba($primary, .5),rgba($warning,.3), transparent);
+//   background: radial-gradient(rgba($primary, .5),rgba($warning,.3), transparent);
+  background-color: #BCC0C5;
 
   .nav-link {
     height: $nav-link-height;

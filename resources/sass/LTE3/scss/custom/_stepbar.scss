@@ -59,15 +59,15 @@
   }
 
   .btn-primary, .badge-primary {
-    background: rgb(220,17,63);
-    background: linear-gradient(90deg,rgba(54,123,190,1) 26%, rgba(118,68,148,1) 63%,  rgba(220,17,63,1) 100%);
-    border: none;
+    // background: rgb(220,17,63);
+    // background: linear-gradient(90deg,rgba(54,123,190,1) 26%, rgba(118,68,148,1) 63%,  rgba(220,17,63,1) 100%);
+    color: white !important;
   }
 
-//   .btn-warning {
-//     background: linear-gradient(
-//         90deg
-//         , rgba(54,123,190,1) 26%, rgba(201,213,34,1) 63%, rgba(253,215,23,1) 100%);
-//             color: white;
-//     border: none;
-//   }
+// //   .btn-warning {
+// //     background: linear-gradient(
+// //         90deg
+// //         , rgba(54,123,190,1) 26%, rgba(201,213,34,1) 63%, rgba(253,215,23,1) 100%);
+// //             color: white;
+// //     border: none;
+// //   }

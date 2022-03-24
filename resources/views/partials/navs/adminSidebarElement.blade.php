@@ -6,17 +6,17 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
 @endphp
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar text-sm elevation-1 sidebar-light-primary">
+<aside class="main-sidebar text-xs sidebar-light-primary bg-light elevation-1">
     <!-- Brand Logo -->
     <a href="#" class="brand-link bg-white">
-        <img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" class="brand-image">
-        {{-- <span class="brand-text font-weight-light">FormaRecrut</span> --}}
+        <img src="{{ asset('img/logo.png') }}" alt="Total SN" class="brand-image">
+        {{-- <span class="brand-text font-weight-light">Total SN</span> --}}
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-2 pb-2 mb-2 d-flex align-items-center px-2">
+        <div class="user-panel mt-2 pb-2 mb-1 d-flex align-items-center px-2 border-0">
             <div class="image">
                 <i class="fas fa-user-circle fa-2x"></i>
             </div>
@@ -31,7 +31,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
         <!-- SidebarSearch Form -->
         {{-- <div class="form-inline px-2 shadow-sm pb-2">
             <div class="input-group my-1" data-widget="sidebar-search">
-                <a class="nav-item btn btn-warning col-md-12 text-left pl-3">
+                <a class="nav-item border-bottom btn btn-warning col-md-12 text-left pl-3">
                     <i class="fa fa-plus-circle"></i>
                     Nouveau document
                 </a>
@@ -41,7 +41,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link btn-warning">
+                    <a href="#" class="nav-link btn-secondary text-white">
                         <i class="nav-icon fas fa-plus-circle"></i>
                         <p>
                             Catalogue candidat
@@ -71,7 +71,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
                         @php
                             $url_principal = isset($header->url) ? url($header->url) : (isset($header->route) ? route($header->route) : '#');
                         @endphp
-                        <li class="nav-item">
+                        <li class="nav-item border-bottom">
                             <a href="{{ $url_principal }}"
                                 class="nav-link {{ $url_principal == $full_url ? 'active' : '' }}">
                                 <i class="nav-icon fas {{ $header->fa }}"></i>
@@ -90,7 +90,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
                         <!-- Nav Item - Utilities Collapse Menu -->
                         @if (isset($second->items) && count($second->items) > 0)
                             <li
-                                class="nav-item {{ isset($second->refs) && in_array($ref, $second->refs) ? ' menu-open' : '' }}">
+                                class="nav-item border-bottom {{ isset($second->refs) && in_array($ref, $second->refs) ? ' menu-open' : '' }}">
                                 <a href="#"
                                     class="nav-link{{ isset($second->refs) && in_array($ref, $second->refs) ? ' active' : '' }}">
                                     <i class="nav-icon fas {{ $second->fa }}"></i>
@@ -102,14 +102,14 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
                                         @endif
                                     </p>
                                 </a>
-                                <ul class="nav nav-treeview">
+                                <ul class="nav nav-treeview shadow-sm">
                                     @if (isset($second->items) && count($second->items) > 0)
 
                                         @foreach ($second->items as $item)
                                             @php
                                                 $itemUrl = isset($item->url) ? url($item->url, $item->params ?? []) : (isset($item->route) ? route($item->route, $item->params ?? []) : '#');
                                             @endphp
-                                            <li class="nav-item">
+                                            <li class="nav-item border-bottom">
                                                 <a href="{{ $itemUrl }}"
                                                     class="nav-link{{ $itemUrl == $full_url ? ' active' : '' }}">
                                                     <i class="far fa-circle nav-icon"></i>
@@ -129,7 +129,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
                                 @php
                                     $url_secondaire = isset($second->url) ? url($second->url) : (isset($second->route) ? route($second->route) : '#');
                                 @endphp
-                            <li class="nav-item">
+                            <li class="nav-item border-bottom">
                                 <a href="{{ $url_secondaire }}"
                                     class="nav-link {{ $url_secondaire == $full_url ? 'active' : '' }}">
                                     <i class="nav-icon fas {{ $second->fa }}"></i>

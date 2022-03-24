@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get("candidats/complets", [App\Http\Controllers\Admin\CandidatsController::class, 'complets'])->name('candidats.complets');
         Route::get("candidats/incomplets", [App\Http\Controllers\Admin\CandidatsController::class, 'incomplets'])->name('candidats.incomplets');
+        Route::get("candidats/{candidat}/profil", [App\Http\Controllers\Admin\CandidatsController::class, 'show'])->name('candidats.show');
 
         Route::get("recruteurs/actifs", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('entreprises.actifs');
         Route::get("recruteurs/inactifs", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('entreprises.inactifs');

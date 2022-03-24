@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }} @yield('title')</title>
+        <title>{{ config('app.name', 'Laravel') }} @hasSection ('name') -  @yield('title') @endif </title>
 
         <link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16" />
@@ -31,6 +31,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/vendor/jquery.auto-complete.css') }}" rel="stylesheet">
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
+
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet"/> --}}
 
         {{-- Reglage CSS ADMIN LTE --}}
         <style>
@@ -55,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content-wrapper">
 
             <!-- Content Header (Page header) -->
-            <div class="content-header bg-white px-3 py-3 d-flex justify-content-between align-items-center shadow-sm">
+            <div class="content-header bg-white px-3 py-2 d-flex justify-content-between align-items-center shadow-sm">
                 <h2 class="h6 m-0 text-black-50">@yield('title')</h2>
                 <!-- Actions-->
                 @yield('actions')
@@ -96,6 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
         {{-- <script src="{{ asset('js/vendor/chart.js/Chart.min.js') }}"></script> --}}
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 
 
         {{-- SWEET ALERT --}}

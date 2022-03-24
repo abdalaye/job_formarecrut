@@ -31,29 +31,19 @@
         background-color: rgba($primary,.12);
         border-radius: 5px !important;
     }
-    .table-striped tbody tr:nth-of-type(even) {
-        background-color: rgba($warning,.08);
-    }
-    .table-striped tbody tr {
-        transition: all .3s;
-        z-index: 100;
-    }
-    .table-striped tbody tr:hover {
-        transform: scaleX(1.01);
-    }
 
-    // .table-hover tbody tr:hover {
-    //     background-color: $primary;
-    //     td{
-    //         color: white;
-    //     }
-    //     .btn{
-    //         background: white !important;
-    //         i{
-    //             color: $primary !important;
-    //         }
-    //     }
-    // }
+    .table-hover tbody tr:hover {
+        background-color: $primary;
+        td{
+            color: white;
+        }
+        .btn{
+            background: white !important;
+            i{
+                color: $primary !important;
+            }
+        }
+    }
     .dataTables_length{
         margin-top: -40px;
         float: left;
