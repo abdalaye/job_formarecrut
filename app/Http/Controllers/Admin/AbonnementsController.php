@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AbonnementRequest;
+use App\Models\Abonnement;
 use Illuminate\Http\Request;
 
 class AbonnementsController extends Controller
@@ -14,17 +16,17 @@ class AbonnementsController extends Controller
      */
     public function index()
     {
-        //
+        $partial = request()->query("partial");
+        $abonnements = Abonnement::orderByDesc('created_at')->get()->all();
+
+        return view("admin.abonnements.index", compact("abonnements"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $abonnement = new Abonnement(['statut' => true]);
+
+        return view("admin.abonnements.create", compact("abonnement"));
     }
 
     /**
@@ -33,9 +35,13 @@ class AbonnementsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AbonnementRequest $request)
     {
-        //
+        $data = $request->validated();
+        $abonnement = new Abonnement($data);
+
+        return $abonnement->save() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -44,7 +50,7 @@ class AbonnementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Abonnement $abonnement)
     {
         //
     }
@@ -52,10 +58,10 @@ class AbonnementsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Abonnement $abonnement
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Abonnement $abonnement)
     {
         //
     }
@@ -67,9 +73,11 @@ class AbonnementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AbonnementRequest $request, Abonnement $abonnement)
     {
-        //
+        $data = $request->validated();
+        return $abonnement->update($data) ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 
     /**
@@ -78,8 +86,9 @@ class AbonnementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Abonnement $abonnement)
     {
-        //
+        return $abonnement->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
+        back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
 }
