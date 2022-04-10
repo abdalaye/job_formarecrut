@@ -110,6 +110,10 @@ class MenusController extends Controller
                             "route" => "admin.type_contrats.index"
                         ],
                         [
+                            "name" => "Types de situation",
+                            "route" => "admin.situations.index"
+                        ],
+                        [
                             "name" => "Abonnements",
                             "route" => "admin.abonnements.index"
                         ],
