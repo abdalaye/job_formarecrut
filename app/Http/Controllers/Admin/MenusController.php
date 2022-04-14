@@ -76,6 +76,25 @@ class MenusController extends Controller
                     ]
                 ],
                 [
+                    "name" => "Comptes",
+                    "fa" => "fa-users",
+                    // "withoutPrefix" => true,
+                    // 'variableCount' => "_nombre_receptions_menu",
+                    "refs" => ['users', "users-incomplets"],
+                    "items" => [
+                        [
+                            "name" => "Utilisateurs actifs",
+                            "route" => "admin.users.index",
+                            // "variableCount" => "_nombre_brouillons_menu",
+                        ],
+                        [
+                            "name" => "Utilisateurs inactifs",
+                            "route" => "admin.users.inactifs",
+                            // "variableCount" => "_nombre_soumis_menu",
+                        ]
+                    ]
+                ],
+                [
                     "name" => "Configurations",
                     "fa" => "fa-cog",
                     "header" => "Gestion des configurations",

@@ -22,12 +22,12 @@
         @foreach ($users as $user)
         <tr>
             <td>{{ $i }} </td>
-            <td>{{  $user->collaborateur->prenom ?? '---' }}</td>
-            <td>{{  $user->collaborateur->nom ?? '---' }}</td>
+            <td>{{  $user->prenom ?? '---' }}</td>
+            <td>{{  $user->nom ?? '---' }}</td>
             <td>{{ $user->email }}</td>
             <td>{{  $user->profil_name ?? '---' }}</td>
             <td>
-                <a href="{{ route('admin.showUser', $user->id) }}" id="{{ $user->id }}" class="btn btn-primary btn-sm user">
+                <a href="{{ route('admin.users.show', $user->id) }}" id="{{ $user->id }}" class="btn btn-primary btn-sm user">
                     <i class="fa fa-eye"></i>
                 </a>
             </td>

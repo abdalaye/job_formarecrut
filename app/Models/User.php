@@ -66,8 +66,8 @@ class User extends Authenticatable
         return $this->profil->name ?? "Non défini";
     }
 
-    public function getIsAdminAttribute() {
-        return $this->fields['is_admin'] || ($this->profil && $this->profil->id == 3);
+    public function getIsAdminProfilAttribute() {
+        return $this->is_admin || (isset($this->profil) && $this->profil->id == 3);
     }
 
     public function getNomCompletAttribute() {
@@ -84,5 +84,15 @@ class User extends Authenticatable
         }
         $profils = Profil::whereNotIn('id',$profil_ids)->get();
         return $profils;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('etat', 1);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('etat', 0);
     }
 }

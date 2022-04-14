@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-@php
-    $collaborateur = $user->collaborateur;    
-@endphp
 
 @section('title', "Profil collaborateur")
 

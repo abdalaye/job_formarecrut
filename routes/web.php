@@ -47,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
             Route::resource("abonnements", App\Http\Controllers\Admin\AbonnementsController::class);
             Route::resource("situations", App\Http\Controllers\Admin\SituationsController::class);
         });
+        Route::resource("users", App\Http\Controllers\Admin\UsersController::class);
+        Route::get("users-incomplets", [App\Http\Controllers\Admin\UsersController::class, 'inactifs'])->name("users.inactifs");
 
         Route::get("candidats/complets", [App\Http\Controllers\Admin\CandidatsController::class, 'complets'])->name('candidats.complets');
         Route::get("candidats/incomplets", [App\Http\Controllers\Admin\CandidatsController::class, 'incomplets'])->name('candidats.incomplets');
