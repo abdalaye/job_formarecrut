@@ -18,11 +18,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,14 +47,6 @@ class User extends Authenticatable
         return $this->belongsTo(Profil::class);
     }
 
-    public function CollaborateurByIgg($user,$igg) {
-        if($user->igg == $igg){
-            return $user;
-        }
-
-        return null;
-    }
-
     public function getProfilNameAttribute() {
         if($this->is_admin) {
             return "Administrateur";
@@ -71,19 +59,10 @@ class User extends Authenticatable
     }
 
     public function getNomCompletAttribute() {
-        if(isset($this->collaborateur)) {
-            return $this->collaborateur->prenom .' ' . $this->collaborateur->nom;
+        if(isset($this->candidat)) {
+            return $this->candidat->prenom .' ' . $this->candidat->nom;
         }
         return $this->email;
-    }
-    public function getRoleNotDefinedAttribute(){
-        $roles = $this->roles;
-        $profil_ids  = [];
-        foreach ($roles as $role) {
-            array_push($profil_ids, $role->profil_id);
-        }
-        $profils = Profil::whereNotIn('id',$profil_ids)->get();
-        return $profils;
     }
 
     public function scopeActive($query)

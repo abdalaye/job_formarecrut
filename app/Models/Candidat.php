@@ -20,6 +20,11 @@ class Candidat extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function niveau_etude()
     {
         return $this->belongsTo(NiveauEtude::class);
@@ -28,6 +33,13 @@ class Candidat extends Model
     public function situation()
     {
         return $this->belongsTo(Situation::class);
+    }
+
+    public function getSexeAttribute()
+    {
+        if($this->genre == 1) return "Homme";
+        if($this->genre == 2) return "Femme";
+        return "Non renseigné";
     }
 
     public function getStatutBadgeAttribute()

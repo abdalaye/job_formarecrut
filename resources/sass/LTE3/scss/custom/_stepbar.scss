@@ -14,7 +14,7 @@
   }
 
   .step .step-item:not(:first-child)::before {
-    background: $primary;
+    background: $secondary;
     content: "";
     height: 2px;
     left: -50%;
@@ -31,7 +31,7 @@
   }
 
   .step .step-item a::before {
-    background: $primary;
+    background: $secondary;
     border: .1rem solid #fff;
     border-radius: 50%;
     content: "";
@@ -47,7 +47,7 @@
 
   .step .step-item.active a::before {
     background: #fff;
-    border: .1rem solid $primary;
+    border: .1rem solid $secondary;
   }
 
   .step .step-item.active ~ .step-item::before {

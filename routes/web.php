@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get("candidats/complets", [App\Http\Controllers\Admin\CandidatsController::class, 'complets'])->name('candidats.complets');
         Route::get("candidats/incomplets", [App\Http\Controllers\Admin\CandidatsController::class, 'incomplets'])->name('candidats.incomplets');
         Route::get("candidats/{candidat}/profil", [App\Http\Controllers\Admin\CandidatsController::class, 'show'])->name('candidats.show');
+        Route::get("candidats/{candidat}/modification", [App\Http\Controllers\Admin\CandidatsController::class, 'edit'])->name('candidats.edit');
+        Route::patch("candidats/{candidat}/step1", [App\Http\Controllers\Admin\CandidatsController::class, 'step1'])->name('candidats.step1');
+        Route::patch("candidats/{candidat}/step2", [App\Http\Controllers\Admin\CandidatsController::class, 'step2'])->name('candidats.step2');
+        Route::patch("candidats/{candidat}/step3", [App\Http\Controllers\Admin\CandidatsController::class, 'step3'])->name('candidats.step3');
 
         Route::get("recruteurs/actifs", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('entreprises.actifs');
         Route::get("recruteurs/inactifs", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('entreprises.inactifs');
