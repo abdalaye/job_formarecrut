@@ -27,7 +27,7 @@ class CandidatStep1Request extends FormRequest
         return [
             'nom' => 'required|max:255',
             'prenom' => 'required|max:255',
-            'photo_upload' => 'nullable|file',
+            'photo_upload' => 'nullable|image|max:2048',
             'telephone' => 'required|max:20',
             'genre' => 'required',
             'date_naissance' => 'required',

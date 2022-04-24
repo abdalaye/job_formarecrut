@@ -10,7 +10,7 @@ class CandidatRepository
 {
 
     protected $candidat;
-    protected $folderCandidat = "candidats/profils";
+    protected $folderCandidat = "public/candidats/profils";
 
     public function __construct(Candidat $candidat)
 	{
@@ -42,10 +42,11 @@ class CandidatRepository
 
         $last_photo = $candidat->getOriginal("photo");
         if($last_photo) UtilitiesController::removeFile($last_photo); //remove File
+        if(isset($inputs['photo_upload'])
+            && request()->hasFile("photo_upload")
+            && request()->file("photo_upload")->isValid()) { //Save Photo
 
-        if(isset($inputs['photo_upload'])) { //Save Photo
-
-            $photoUrl = UtilitiesController::uploadFile($inputs['photo_upload'],$this->folderCandidat,['jpg', 'png', 'jpeg']);
+            $photoUrl = UtilitiesController::storeFile($inputs['photo_upload'],$this->folderCandidat);
             if(!$photoUrl) {
                 session()->flash("error", "Le chargement de l'image de profil a échoué !");
                 $inputs['photo'] = null;
