@@ -22,10 +22,9 @@ class CandidatsController extends Controller
     {
        $title = "Candidats - Profils complets";
        $candidats = Candidat::where("statut", 1)
-                    ->orderByDesc('created_at')
+                    ->latest()
                     ->with('user')
-                    ->get()
-                    ->all();
+                    ->get();
 
         return view("admin.candidats.index", compact("title", "candidats"));
     }
@@ -35,10 +34,9 @@ class CandidatsController extends Controller
     {
         $title = "Candidats - Profils incomplets";
         $candidats = Candidat::where("statut", 0)
-                    ->orderByDesc('created_at')
+                    ->latest()
                     ->with('user')
-                    ->get()
-                    ->all();
+                    ->get();
 
         return view("admin.candidats.index", compact("title", "candidats"));
     }

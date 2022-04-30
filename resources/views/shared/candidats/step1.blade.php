@@ -120,7 +120,7 @@
 
 </form>
 
-@section('partialScript')
+@push('scripts')
     <script>
         $('body').on('change', '#photo_upload', function(e) {
             let val = $(this).val().trim();
@@ -133,4 +133,4 @@
             }
         });
     </script>
-@endsection
+@endPush

@@ -8,3 +8,13 @@ $('#flash-overlay-modal').modal();
 //         $('body').addClass('sidebar-collapse');
 //     }
 // });
+ //Ajax form message
+ $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+if ($(".select").html() !== undefined) {
+    $('.select').select2();
+}

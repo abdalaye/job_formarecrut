@@ -1,7 +1,7 @@
 //Les champs avec select2
 $('.select2').select2();
 
-$(window).on('x', function(){
+$(window).on('load', function(){
     setTimeout(removeLoader, 100); //wait for page load 1/2s
 });
 function removeLoader(){
