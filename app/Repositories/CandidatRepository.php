@@ -42,11 +42,13 @@ class CandidatRepository
 
         $last_photo = $candidat->getOriginal("photo");
         if($last_photo) UtilitiesController::removeFile($last_photo); //remove File
+
         if(isset($inputs['photo_upload'])
             && request()->hasFile("photo_upload")
             && request()->file("photo_upload")->isValid()) { //Save Photo
 
             $photoUrl = UtilitiesController::storeFile($inputs['photo_upload'],$this->folderCandidat);
+
             if(!$photoUrl) {
                 session()->flash("error", "Le chargement de l'image de profil a échoué !");
                 $inputs['photo'] = null;

@@ -70,7 +70,7 @@
                                         "name" => "notify_all[]",
                                         "id" => "notify_all",
                                         "multiple" => true,
-                                        "default" => explode(';', $chaine->notify_all ?? ""),
+                                        "value" => explode(';', $chaine->notify_all ?? ""),
                                     ])
                                 </div>
                                 <div class="form-group text-right">
@@ -126,7 +126,7 @@
                                                         data-url="{{ route('admin.lignechaines.update', $ligne) }}"
                                                         class="btn btn-xs btn-light text-warning editModal"
                                                         ><i class="fas fa-edit"></i></a>
-                
+
                                                     @include('partials.components.deleteBtnElement', [
                                                         "btnInnerHTML" => '<i class="fas fa-trash"></i>',
                                                         "class" => 'btn btn-xs btn-light text-primary',

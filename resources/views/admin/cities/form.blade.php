@@ -18,7 +18,7 @@
       'required' => true,
       'id' => isset($from_modal) ? 'country_idModal' : 'country_id',
       'name' => 'country_id',
-      'default' => old("country_id") ?? $city->country_id
+      'value' => old("country_id") ?? $city->country_id
   ])
 </div>
 

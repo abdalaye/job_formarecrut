@@ -37,7 +37,7 @@
                                                         "display" => "name",
                                                         "name" => "restriction_direction_ids[]",
                                                         "id" => "restriction_direction_ids",
-                                                        "default" => explode(";", $chaine->restriction_direction_ids ?? ""),
+                                                        "value" => explode(";", $chaine->restriction_direction_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>
@@ -50,7 +50,7 @@
                                                         "display" => "name",
                                                         "name" => "restriction_departement_ids[]",
                                                         "id" => "restriction_departement_ids",
-                                                        "default" => explode(";", $chaine->restriction_departement_ids ?? ""),
+                                                        "value" => explode(";", $chaine->restriction_departement_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>
@@ -62,7 +62,7 @@
                                                         'options' => $_services,
                                                         "name" => "restriction_service_ids[]",
                                                         "id" => "restriction_service_ids",
-                                                        "default" => explode(";", $chaine->restriction_service_ids ?? ""),
+                                                        "value" => explode(";", $chaine->restriction_service_ids ?? ""),
                                                         "display" => "name",
                                                         "multiple" => true
                                                     ])
@@ -77,7 +77,7 @@
                                                         "empty" => $chaine->restriction_tous_collaborateurs ? "Tous les collaborateurs" : false,
                                                         "name" => "restriction_collaborateur_ids[]",
                                                         "id" => "restriction_collaborateur_ids",
-                                                        "default" => explode(";", $chaine->restriction_collaborateur_ids ?? ""),
+                                                        "value" => explode(";", $chaine->restriction_collaborateur_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>

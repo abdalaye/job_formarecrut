@@ -37,7 +37,7 @@
                                                         "display" => "name",
                                                         "name" => "consultation_direction_ids[]",
                                                         "id" => "consultation_direction_ids",
-                                                        "default" => explode(";", $chaine->consultation_direction_ids ?? ""),
+                                                        "value" => explode(";", $chaine->consultation_direction_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>
@@ -50,7 +50,7 @@
                                                         "display" => "name",
                                                         "name" => "consultation_departement_ids[]",
                                                         "id" => "consultation_departement_ids",
-                                                        "default" => explode(";", $chaine->consultation_departement_ids ?? ""),
+                                                        "value" => explode(";", $chaine->consultation_departement_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>
@@ -63,7 +63,7 @@
                                                         "name" => "consultation_service_ids[]",
                                                         "id" => "consultation_service_ids",
                                                         "display" => "name",
-                                                        "default" => explode(";", $chaine->consultation_service_ids ?? ""),
+                                                        "value" => explode(";", $chaine->consultation_service_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>
@@ -77,7 +77,7 @@
                                                         "empty" => $chaine->consultation_tous_collaborateurs ? "Tous les collaborateurs" : false ,
                                                         "name" => "consultation_collaborateur_ids[]",
                                                         "id" => "consultation_collaborateur_ids",
-                                                        "default" => explode(";", $chaine->consultation_collaborateur_ids ?? ""),
+                                                        "value" => explode(";", $chaine->consultation_collaborateur_ids ?? ""),
                                                         "multiple" => true
                                                     ])
                                                 </td>

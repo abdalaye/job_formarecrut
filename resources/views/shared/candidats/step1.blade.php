@@ -3,7 +3,6 @@
     @csrf
     @method("PATCH")
     <div class="col-md-12">
-        {{-- {!! $errors !!} --}}
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -34,43 +33,39 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    @include('partials.components.inputFormGroupElement', [
-                        'col' => 'col-md-6',
-                        'name' => 'prenom',
-                        'label' => 'Prénom',
-                        'required' => true,
-                        'value' => old('prenom') ?? $candidat->prenom,
-                    ])
-                    @include('partials.components.inputFormGroupElement', [
-                        'col' => 'col-md-6',
-                        'name' => 'nom',
-                        'label' => 'Nom de famille',
-                        'required' => true,
-                        'value' => old('nom') ?? $candidat->nom,
-                    ])
-                    @include('partials.components.inputFormGroupElement', [
-                        'col' => 'col-md-6',
-                        'name' => 'telephone',
-                        'label' => 'Numéro de téléphone',
-                        'required' => true,
-                        'value' => old('telephone') ?? $candidat->telephone,
-                    ])
-                    @include(
-                        'partials.components.selectFormGroupElement',
-                        [
-                            'options' => json_decode(
-                                json_encode([
-                                    ['id' => 1, 'name' => 'Homme'],
-                                    ['id' => 2, 'name' => 'Femme'],
-                                ])
-                            ),
-                            'display' => 'name',
-                            'col' => 'col-md-6',
-                            'required' => true,
-                            'label' => 'Sexe',
-                            'name' => 'genre',
-                        ]
-                    )
+                    <x-input-form-group
+                        col='col-md-6'
+                        name='prenom'
+                        label='Prénom'
+                        required='true'
+                        value="{{ old('prenom') ?? $candidat->prenom }}">
+                    </x-input-form-group>
+
+                    <x-input-form-group
+                        col='col-md-6'
+                        name='nom'
+                        label='Nom de famille'
+                        required='true'
+                        value="{{ old('nom') ?? $candidat->nom }}">
+                    </x-input-form-group>
+
+                    <x-input-form-group
+                        col='col-md-6'
+                        name='telephone'
+                        label='Numéro de téléphone'
+                        required='true'
+                        value="{{ old('telephone') ?? $candidat->telephone }}">
+                    </x-input-form-group>
+
+                    <x-select-form-group
+                        :options='$_genres'
+                        display='name'
+                        col='col-md-6'
+                        label='Sexe'
+                        name='genre'
+                        required='true'
+                        value="{{ old('genre') ?? $candidat->genre }}">
+                    </x-select-form-group>
                 </div>
             </div>
         </div>
@@ -106,7 +101,7 @@
         'col' => 'col-md-6',
         'label' => 'Pays',
         'name' => 'country_id',
-        'default' => old('country_id') ?? $candidat->country_id,
+        'value' => old('country_id') ?? $candidat->country_id,
     ])
     @include('partials.components.selectFormGroupElement', [
         'options' => $_cities,
@@ -114,7 +109,7 @@
         'col' => 'col-md-6',
         'label' => 'Ville',
         'name' => 'city_id',
-        'default' => old('city_id') ?? $candidat->city_id,
+        'value' => old('city_id') ?? $candidat->city_id,
     ])
 
     <div class="text-right rounded px-2 py-3 border col-md-12">

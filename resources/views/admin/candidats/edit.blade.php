@@ -36,7 +36,7 @@
             @case(2)
 
                 @break
-            @default
+            @value
 
         @endswitch
     </div>

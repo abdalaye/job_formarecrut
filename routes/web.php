@@ -35,31 +35,32 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin_middleware'])
             ->prefix("admin")
             ->name("admin.")
+            ->namespace('App\Http\Controllers\Admin')
             ->group(function () {
         Route::prefix("parametres")->group(function() {
-            Route::resource("countries", App\Http\Controllers\Admin\CountriesController::class);
-            Route::resource("cities", App\Http\Controllers\Admin\CitiesController::class);
-            Route::resource("secteurs", App\Http\Controllers\Admin\SecteursController::class);
-            Route::resource("niveau_langues", App\Http\Controllers\Admin\NiveauLanguesController::class);
-            Route::resource("niveau_etudes", App\Http\Controllers\Admin\NiveauEtudesController::class);
-            Route::resource("niveau_competences", App\Http\Controllers\Admin\NiveauCompetencesController::class);
-            Route::resource("type_contrats", App\Http\Controllers\Admin\TypeContratsController::class);
-            Route::resource("abonnements", App\Http\Controllers\Admin\AbonnementsController::class);
-            Route::resource("situations", App\Http\Controllers\Admin\SituationsController::class);
+            Route::resource("countries", CountriesController::class);
+            Route::resource("cities", CitiesController::class);
+            Route::resource("secteurs", SecteursController::class);
+            Route::resource("niveau_langues", NiveauLanguesController::class);
+            Route::resource("niveau_etudes", NiveauEtudesController::class);
+            Route::resource("niveau_competences", NiveauCompetencesController::class);
+            Route::resource("type_contrats", TypeContratsController::class);
+            Route::resource("abonnements", AbonnementsController::class);
+            Route::resource("situations", SituationsController::class);
         });
-        Route::resource("users", App\Http\Controllers\Admin\UsersController::class);
-        Route::get("users-incomplets", [App\Http\Controllers\Admin\UsersController::class, 'inactifs'])->name("users.inactifs");
+        Route::resource("users", UsersController::class);
+        Route::get("users-incomplets", [UsersController::class, 'inactifs'])->name("users.inactifs");
 
-        Route::get("candidats/complets", [App\Http\Controllers\Admin\CandidatsController::class, 'complets'])->name('candidats.complets');
-        Route::get("candidats/incomplets", [App\Http\Controllers\Admin\CandidatsController::class, 'incomplets'])->name('candidats.incomplets');
-        Route::get("candidats/{candidat}/profil", [App\Http\Controllers\Admin\CandidatsController::class, 'show'])->name('candidats.show');
-        Route::get("candidats/{candidat}/modification", [App\Http\Controllers\Admin\CandidatsController::class, 'edit'])->name('candidats.edit');
-        Route::patch("candidats/{candidat}/step1", [App\Http\Controllers\Admin\CandidatsController::class, 'step1'])->name('candidats.step1');
-        Route::patch("candidats/{candidat}/step2", [App\Http\Controllers\Admin\CandidatsController::class, 'step2'])->name('candidats.step2');
-        Route::patch("candidats/{candidat}/step3", [App\Http\Controllers\Admin\CandidatsController::class, 'step3'])->name('candidats.step3');
+        Route::get("candidats/complets", [CandidatsController::class, 'complets'])->name('candidats.complets');
+        Route::get("candidats/incomplets", [CandidatsController::class, 'incomplets'])->name('candidats.incomplets');
+        Route::get("candidats/{candidat}/profil", [CandidatsController::class, 'show'])->name('candidats.show');
+        Route::get("candidats/{candidat}/modification", [CandidatsController::class, 'edit'])->name('candidats.edit');
+        Route::patch("candidats/{candidat}/step1", [CandidatsController::class, 'step1'])->name('candidats.step1');
+        Route::patch("candidats/{candidat}/step2", [CandidatsController::class, 'step2'])->name('candidats.step2');
+        Route::patch("candidats/{candidat}/step3", [CandidatsController::class, 'step3'])->name('candidats.step3');
 
-        Route::get("recruteurs/actifs", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('entreprises.actifs');
-        Route::get("recruteurs/inactifs", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('entreprises.inactifs');
+        Route::get("recruteurs/actifs", [RecruteursController::class, 'actifs'])->name('entreprises.actifs');
+        Route::get("recruteurs/inactifs", [RecruteursController::class, 'inactifs'])->name('entreprises.inactifs');
     });
 
     Route::prefix("collaborateurs")

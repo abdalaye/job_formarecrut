@@ -9,8 +9,8 @@
     <option
         value="{{ $option['id'] }}"
         {{
-            isset($multiple) ? (isset($default) && in_array($option['id'], $default)? "selected" : "")
-                                : (isset($default) && $default == $option['id'] ? "selected" : "") }}
+            isset($multiple) ? (isset($value) && in_array($option['id'], $value)? "selected" : "")
+                                : (isset($value) && $value == $option['id'] ? "selected" : "") }}
         >{{ $option['prenom']." ".$option['nom'] }}
     </option>
     @endforeach
