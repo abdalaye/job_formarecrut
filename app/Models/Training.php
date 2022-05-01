@@ -20,8 +20,20 @@ class Training extends Model
         'description',
     ];
 
+    protected $appends = ['date_debut', 'date_fin'];
+
     public function entreprise() 
     {
         return $this->belongsTo(Entreprise::class);
+    }
+
+    public function getDateDebutAttribute() 
+    {
+        return sprintf("%s %s", \getMonthByValue($this->debut_mois), $this->debut_annee);
+    }
+
+    public function getDateFinAttribute() 
+    {
+        return sprintf("%s %s", \getMonthByValue($this->fin_mois), $this->fin_annee);
     }
 }

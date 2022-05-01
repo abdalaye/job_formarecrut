@@ -25,8 +25,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div><strong>{{ $experience->poste }}</strong></div>
                 <div>
-                    {{ $experience->debut_mois }} - {{ $experience->debut_annee }} &nbsp;&nbsp;
-                    {{ $experience->fin_mois }} - {{ $experience->fin_annee }}
+                    {{ $experience->date_debut }} &dash; {{ $experience->date_fin }}
                 </div>
             </div>
             <div>{{ $experience->description }}</div>
@@ -44,8 +43,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <strong>{{ $training->formation }}</strong>
                 <div>
-                    {{ $training->debut_mois }} - {{ $training->debut_annee }} &nbsp;&nbsp;
-                    {{ $training->fin_mois }} - {{ $training->fin_annee }}
+                    {{ $training->date_debut }} &dash; {{ $training->date_fin }}
                 </div>
             </div>
             <div>{{ $training->description }}</div>
