@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(Auth::check()) {
-        return redirect()->route("home");
-    }
-    return redirect()->route('login');
+    return view("welcome");
 });
 
 Auth::routes(['register' => false]);

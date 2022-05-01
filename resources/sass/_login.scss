@@ -1,0 +1,84 @@
+$login_primary: #515151;
+// $secondary: #47b2e4;
+$login_secondary: #E36835;
+
+.container {
+    z-index: 100;
+}
+.bg_login {
+    background-color: $login_primary;
+}
+.login_form {
+    background-color: white !important;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 85%;
+    .card__login {
+        border: none !important;
+        max-width: 90%;
+        .card-body {
+            border-left: 2px solid $login_primary;
+        }
+    }
+    .title {
+        font-size: 18px;
+    }
+    .title, .subTitle {
+        font-weight: bolder;
+        color: $login_primary;
+        margin: 0;
+    }
+    input.form-control {
+        border: 1px solid rgba($color: $login_primary, $alpha: .5);
+        background-color: white;
+    }
+    .img {
+        img {
+            max-width: 75%;
+        }
+    }
+    .text-primary, .small {
+        color: $login_secondary !important;
+        // font-weight: bold;
+    }
+    .text-secondary {
+        color: $login_primary !important;
+    }
+}
+
+.btn__login {
+    background-color: $login_secondary;
+    border: none;
+    color: white;
+    &:hover, &:focus, &:active {
+        background-color: darken($color: $login_secondary, $amount: 5);
+        color: white;
+    }
+}
+
+.bg-floue {
+    filter: blur(10px);
+}
+.bg-img__cover {
+    background: linear-gradient(90deg,rgba(darken($login_secondary, 50), .8),rgba(darken($login_secondary, 50), .8)), url("/img/frontend_images/login.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.overlay_img {
+    position: fixed;
+    top: 0;left: 0;right: 0;bottom: 0;
+    z-index: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        max-width: 100% !important;
+    }
+    .login_form {
+        max-width: 100% !important;
+        .card__login {
+            max-width: 95% !important;
+        }
+    }
+}
