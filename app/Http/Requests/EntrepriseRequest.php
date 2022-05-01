@@ -49,14 +49,14 @@ class EntrepriseRequest extends FormRequest
 
         if($this->step == '3') {
             return [
-                'training.*.poste' => 'required',
-                'training.*.employeur' => 'required',
-                'training.*.ville' => 'required',
-                'training.*.debut_mois' => 'required',
-                'training.*.debut_annee' => 'required',
-                'training.*.fin_mois' => 'required',
-                'training.*.fin_annee' => 'required',
-                'training.*.description' => 'required',
+                'pro_experience.*.poste' => 'required',
+                'pro_experience.*.employeur' => 'required',
+                'pro_experience.*.ville' => 'required',
+                'pro_experience.*.debut_mois' => 'required',
+                'pro_experience.*.debut_annee' => 'required',
+                'pro_experience.*.fin_mois' => 'required',
+                'pro_experience.*.fin_annee' => 'required',
+                'pro_experience.*.description' => 'required',
             ];
         }
     }

@@ -5347,6 +5347,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return index != i;
       });
     }
+  },
+  mounted: function mounted() {
+    var savedExperiences = this.recruteur.pro_experiences;
+
+    if (savedExperiences.length) {
+      this.pro_experiences = savedExperiences;
+    }
   }
 });
 

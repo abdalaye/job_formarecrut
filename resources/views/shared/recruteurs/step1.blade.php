@@ -77,7 +77,7 @@
     </div>
 
     @include('partials.components.inputFormGroupElement', [
-        'col' => 'col-md-4',
+        'col' => 'col-6',
         'name' => 'phone',
         'label' => 'Numéro de téléphone',
         'required' => true,
@@ -85,11 +85,18 @@
     ])
 
     @include('partials.components.inputFormGroupElement', [
-        'col' => 'col-md-4',
+        'col' => 'col-6',
         'name' => 'adresse',
         'label' => 'Adresse physique',
         'value' => old('adresse') ?? $recruteur->adresse,
     ])
+
+
+    <div class="form-group col-12">
+        <label for="description" class="control-label">Description <span class="text-danger">*</span></label>
+        <textarea name="description" id="description" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror"></textarea>
+        @error('description') <span class="invalid-feedback">{{ $message }}</span> @enderror
+    </div>
 
 
     <div class="text-right rounded px-2 py-3 border col-md-12">

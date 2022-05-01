@@ -82,6 +82,13 @@
                 this.pro_experiences = this.pro_experiences.filter((tr, i) => index != i);
             },
         },
+
+        mounted() {
+            const savedExperiences = this.recruteur.pro_experiences;
+            if(savedExperiences.length) {
+                this.pro_experiences = savedExperiences;
+            }
+        }
     }
 </script>
 

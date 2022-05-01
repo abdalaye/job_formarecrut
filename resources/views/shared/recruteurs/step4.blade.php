@@ -16,9 +16,10 @@
             <p>{{ $recruteur->description }}</p>
         </div>
 
+        <h1>Expériences professionnelles</h1>
         @foreach($recruteur->pro_experiences()->get() as $experience)
         <div class="cv-preview-item">
-            <h2 class="cv-preview-item__heading">{{ $experience->poste }}</h2>
+            <h4 class="cv-preview-item__heading">{{ $experience->poste }}</h4>
             <div class="d-flex align-items-center justify-content-between">
                 <div><strong>{{ $experience->employeur }} - {{ $experience->ville }}</strong></div>
                 <div>
@@ -32,9 +33,12 @@
 
         <hr>
 
+
+        <h1>Formations</h1>
+
         @foreach($recruteur->trainings()->get() as $training)
         <div class="cv-preview-item">
-            <h2 class="cv-preview-item__heading">{{ $training->formation }}</h2>
+            <h4 class="cv-preview-item__heading">{{ $training->formation }}</h4>
             <div class="d-flex align-items-center justify-content-between">
                 <strong>{{ $training->etablissement }} - {{ $training->ville }}</strong>
                 <div>

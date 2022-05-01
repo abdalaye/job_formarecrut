@@ -99,7 +99,10 @@ class RecruteursController extends Controller
                 'fin_annee'     => $training['fin_annee'],
                 'description'   => $training['description'],
             ];
-            $recruteur->trainings()->updateOrCreate($payload, $payload);
+            $recruteur->trainings()->updateOrCreate([
+                'formation' => $payload['formation'],
+                'etablissement' => $payload['etablissement'],
+            ], $payload);
         }
 
         return response()->json([
@@ -122,7 +125,6 @@ class RecruteursController extends Controller
         $recruteur = $this->entrepriseRepo->find($id);
 
         
-        
         foreach($experiences as $experience) {
             $payload = [
                 'poste'         => $experience['poste'],
@@ -135,7 +137,10 @@ class RecruteursController extends Controller
                 'description'   => $experience['description'],
             ];
 
-            $recruteur->pro_experiences()->updateOrCreate($payload, $payload);
+            $recruteur->pro_experiences()->updateOrCreate([
+                'poste' => $payload['poste'],
+                'employeur' => $payload['employeur'],
+            ], $payload);
         }
 
         return response()->json([
