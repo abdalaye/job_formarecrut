@@ -23,7 +23,7 @@
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 3]) }}">Expériences professionnelles</a>
             </li>
             <li class="step-item {{ $step === 4 ? 'active' : '' }}">
-                <a href="#!">Visualisation CV</a>
+                <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 4]) }}">Visualisation CV</a>
             </li>
         </ul>
     </div>

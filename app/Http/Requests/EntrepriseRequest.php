@@ -30,7 +30,8 @@ class EntrepriseRequest extends FormRequest
                 'rc'          => 'required',
                 'n_employers' => 'required',
                 'phone'       => 'required',
-                'adresse'     => 'required'
+                'adresse'     => 'required',
+                'description' => 'nullable',
             ];
         }
 
