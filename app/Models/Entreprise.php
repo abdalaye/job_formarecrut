@@ -59,7 +59,11 @@ class Entreprise extends Model
 
     public function getLogoUrlAttribute() 
     {
-        return is_null($this->logo) ? asset('img/logo.png') : asset('storage/' .$this->logoDir() . '/' . $this->id . '.' . $this->logo);
+        if(is_null($this->logo)) {
+            return asset('img/logo.png');
+        }
+
+        return asset('storage/' . $this->logoDir() . '/' . $this->id . '.' . $this->logo);
     }  
 
     public function logoImg($options = [])
@@ -67,10 +71,11 @@ class Entreprise extends Model
         $options = array_merge([
             'size' => '100px',
             'alt' => '',
+            'title' => '',
             'class' => '',
         ], $options);
 
-        return new HtmlString('<img class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
+        return new HtmlString('<img title="'.$options['title'].'" alt="'.$options['alt'].'" class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
     } 
 
     public function logoDir()
@@ -84,11 +89,7 @@ class Entreprise extends Model
             
             self::saved(function($instance) use ($file) {
                 $filename = sprintf("%s.%s", $instance->id, $file->getClientOriginalExtension());
-                $file->storePubliclyAs(
-                    $instance->logoDir(),
-                    $filename, 
-                    ['disk' => 'public']
-                );
+                $file->storePubliclyAs($instance->logoDir(), $filename);
             });
 
             $this->attributes['logo'] = $file->getClientOriginalExtension();
