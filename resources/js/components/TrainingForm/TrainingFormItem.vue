@@ -35,7 +35,6 @@
                         <div class="form-group">
                             <label>Date de début</label>
                             <select v-model="training.debut_mois" class="form-control custom-select" :class="{'is-invalid': hasError('debut_mois', index)}">
-                                <option value="">Mois</option>
                                 <option :value="month.value" :key="month.name" v-for="month in months">{{ month.name }}</option>
                             </select>
                             <span class="invalid-feedback" v-if="hasError('debut_mois', index)">{{ getError('debut_mois', index) }}</span>
@@ -45,10 +44,7 @@
                         <div class="form-group">
                             <label for="start_at">&nbsp;</label>
                             <select v-model="training.debut_annee" class="form-control custom-select" :class="{'is-invalid': hasError('debut_annee', index)}">
-                                <option value="">Année</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
+                                <option :value="year.value" :key="year.value" v-for="year in years">{{ year.name }}</option>
                             </select>
                             <span class="invalid-feedback" v-if="hasError('debut_annee', index)">{{ getError('debut_mois', index) }}</span>
                         </div>
@@ -72,10 +68,7 @@
                         <div class="form-group">
                             <label for="start_at" class="d-flex justify-content-between">&nbsp;</label>
                             <select :disabled="now" v-model="training.fin_annee" class="form-control custom-select" :class="{'is-invalid': hasError('fin_annee', index)}">
-                                <option value="">Année</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
+                                <option :value="year.value" :key="year.value" v-for="year in years">{{ year.name }}</option>
                             </select>
                             <span class="invalid-feedback" v-if="hasError('fin_annee', index)">{{ getError('fin_annee', index) }}</span>
                         </div>
@@ -83,6 +76,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-12">
@@ -109,28 +103,16 @@ export default {
         index: { type: Number },
         errors: { type: Object },
         processing: { type: Boolean },
+        months: { type: Array },
+        years: { type: Array },
     },
 
     data() {
         return {
-            months: [
-                {name: 'Janvier', value: '01'}, 
-                {name: 'Février', value: '02'},
-                {name: 'Mars', value: '03'},
-                {name: 'Avril', value: '04'},
-                {name: 'Mai', value: '05'},
-                {name: 'Juin', value: '06'},
-                {name: 'Juillet', value: '07'},
-                {name: 'Août', value: '08'},
-                {name: 'Septembre', value: '09'},
-                {name: 'Octobre', value: '10'},
-                {name: 'Novembre', value: '11'},
-                {name: 'Décembre', value: '12'},
-            ],
-
             now: false,
         }
     },
+
 
     methods: {
         removeTraining(index) {

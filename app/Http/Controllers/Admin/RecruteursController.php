@@ -89,7 +89,7 @@ class RecruteursController extends Controller
         $recruteur = $this->entrepriseRepo->find($id);
         
         foreach($trainings as $training) {
-            $recruteur->trainings()->create([
+            $payload = [
                 'formation'     => $training['formation'],
                 'etablissement' => $training['etablissement'],
                 'ville'         => $training['ville'],
@@ -98,7 +98,8 @@ class RecruteursController extends Controller
                 'fin_mois'      => $training['fin_mois'],
                 'fin_annee'     => $training['fin_annee'],
                 'description'   => $training['description'],
-            ]);
+            ];
+            $recruteur->trainings()->updateOrCreate($payload, $payload);
         }
 
         return response()->json([
@@ -119,9 +120,11 @@ class RecruteursController extends Controller
         $currentStep = (int) $request->step;
         
         $recruteur = $this->entrepriseRepo->find($id);
+
+        
         
         foreach($experiences as $experience) {
-            $recruteur->pro_experiences()->create([
+            $payload = [
                 'poste'         => $experience['poste'],
                 'employeur'     => $experience['employeur'],
                 'ville'         => $experience['ville'],
@@ -130,7 +133,9 @@ class RecruteursController extends Controller
                 'fin_mois'      => $experience['fin_mois'],
                 'fin_annee'     => $experience['fin_annee'],
                 'description'   => $experience['description'],
-            ]);
+            ];
+
+            $recruteur->pro_experiences()->updateOrCreate($payload, $payload);
         }
 
         return response()->json([

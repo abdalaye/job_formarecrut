@@ -5571,7 +5571,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['recruteur'],
+  props: ['recruteur', 'years', 'months'],
   components: {
     TrainingFormItem: _TrainingFormItem__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -5630,6 +5630,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.trainings = this.trainings.filter(function (tr, i) {
         return index != i;
       });
+    }
+  },
+  mounted: function mounted() {
+    var savedTrainings = this.recruteur.trainings;
+
+    if (savedTrainings.length) {
+      this.trainings = savedTrainings;
     }
   }
 });
@@ -5745,12 +5752,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     training: {
@@ -5764,47 +5765,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     processing: {
       type: Boolean
+    },
+    months: {
+      type: Array
+    },
+    years: {
+      type: Array
     }
   },
   data: function data() {
     return {
-      months: [{
-        name: 'Janvier',
-        value: '01'
-      }, {
-        name: 'Février',
-        value: '02'
-      }, {
-        name: 'Mars',
-        value: '03'
-      }, {
-        name: 'Avril',
-        value: '04'
-      }, {
-        name: 'Mai',
-        value: '05'
-      }, {
-        name: 'Juin',
-        value: '06'
-      }, {
-        name: 'Juillet',
-        value: '07'
-      }, {
-        name: 'Août',
-        value: '08'
-      }, {
-        name: 'Septembre',
-        value: '09'
-      }, {
-        name: 'Octobre',
-        value: '10'
-      }, {
-        name: 'Novembre',
-        value: '11'
-      }, {
-        name: 'Décembre',
-        value: '12'
-      }],
       now: false
     };
   },
@@ -29209,6 +29179,9 @@ var render = function () {
         return _c("training-form-item", {
           key: "training" + index,
           attrs: {
+            recruteur: _vm.recruteur,
+            years: _vm.years,
+            months: _vm.months,
             processing: _vm.processing,
             errors: _vm.errors,
             index: index,
@@ -29423,18 +29396,14 @@ var render = function () {
                     },
                   },
                 },
-                [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("Mois")]),
-                  _vm._v(" "),
-                  _vm._l(_vm.months, function (month) {
-                    return _c(
-                      "option",
-                      { key: month.name, domProps: { value: month.value } },
-                      [_vm._v(_vm._s(month.name))]
-                    )
-                  }),
-                ],
-                2
+                _vm._l(_vm.months, function (month) {
+                  return _c(
+                    "option",
+                    { key: month.name, domProps: { value: month.value } },
+                    [_vm._v(_vm._s(month.name))]
+                  )
+                }),
+                0
               ),
               _vm._v(" "),
               _vm.hasError("debut_mois", _vm.index)
@@ -29484,15 +29453,14 @@ var render = function () {
                     },
                   },
                 },
-                [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("Année")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2022" } }, [_vm._v("2022")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2021" } }, [_vm._v("2021")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2020" } }, [_vm._v("2020")]),
-                ]
+                _vm._l(_vm.years, function (year) {
+                  return _c(
+                    "option",
+                    { key: year.value, domProps: { value: year.value } },
+                    [_vm._v(_vm._s(year.name))]
+                  )
+                }),
+                0
               ),
               _vm._v(" "),
               _vm.hasError("debut_annee", _vm.index)
@@ -29614,15 +29582,14 @@ var render = function () {
                     },
                   },
                 },
-                [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("Année")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2022" } }, [_vm._v("2022")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2021" } }, [_vm._v("2021")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2020" } }, [_vm._v("2020")]),
-                ]
+                _vm._l(_vm.years, function (year) {
+                  return _c(
+                    "option",
+                    { key: year.value, domProps: { value: year.value } },
+                    [_vm._v(_vm._s(year.name))]
+                  )
+                }),
+                0
               ),
               _vm._v(" "),
               _vm.hasError("fin_annee", _vm.index)

@@ -1,6 +1,6 @@
 <template>
     <form ref="addTrainingForm" action="" @submit.prevent="save">
-        <training-form-item :processing="processing" :errors="errors" @onRemoveTraining="onRemoveTraining" :index="index" :training="training" v-for="(training, index) in trainings" :key="'training'+index"/>
+        <training-form-item :recruteur="recruteur" :years="years" :months="months" :processing="processing" :errors="errors" @onRemoveTraining="onRemoveTraining" :index="index" :training="training" v-for="(training, index) in trainings" :key="'training'+index"/>
 
         <div ref="addTraining" class="d-flex align-items-center justify-content-center">
             <button type="button" class="btn btn-primary btn-lg" @click.prevent="addTraining">
@@ -15,7 +15,7 @@
 
     export default {
 
-        props: ['recruteur'],
+        props: ['recruteur', 'years', 'months'],
 
         components: { TrainingFormItem },
 
@@ -82,6 +82,14 @@
                 this.trainings = this.trainings.filter((tr, i) => index != i);
             },
         },
+
+        mounted() {
+            const savedTrainings = this.recruteur.trainings;
+            
+            if(savedTrainings.length) {
+                this.trainings = savedTrainings;
+            }
+        }
     }
 </script>
 

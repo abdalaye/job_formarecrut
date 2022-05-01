@@ -1,5 +1,9 @@
 
-<training-form :recruteur="{{ json_encode($recruteur) }}" />
+<training-form 
+    :months="{{ json_encode($_months) }}" 
+    :years="{{ json_encode($_years) }}" 
+    :recruteur="{{ json_encode($recruteur) }}" 
+/>
 
 @push('scripts')
     <script>

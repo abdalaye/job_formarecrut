@@ -9,7 +9,7 @@
         $step = (int) request('step', 1);
 
     @endphp
-    <div class="col-md-12">
+    <div class="col-12">
         <ul class="step d-flex flex-nowrap rounded py-3 bg-white shadow-sm">
             <li class="step-item {{ $step === 1 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => $step - 1]) }}">
@@ -17,10 +17,10 @@
                 </a>
             </li>
             <li class="step-item {{ $step === 2 ? 'active' : '' }}">
-                <a href="#!">Formations</a>
+                <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => $step - 1]) }}">Formations</a>
             </li>
             <li class="step-item {{ $step === 3 ? 'active' : '' }}">
-                <a href="#!">Expériences professionnelles</a>
+                <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => $step - 1]) }}">Expériences professionnelles</a>
             </li>
             <li class="step-item {{ $step === 4 ? 'active' : '' }}">
                 <a href="#!">Visualisation CV</a>
@@ -28,7 +28,7 @@
         </ul>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-12">
         <hr>
         <div class="card-body rounded bg-white">
             @switch($step)

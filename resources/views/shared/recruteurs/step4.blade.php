@@ -26,6 +26,7 @@
                     {{ $experience->fin_mois }} - {{ $experience->fin_annee }}
                 </div>
             </div>
+            <div>{{ $experience->description }}</div>
         </div>
         @endforeach
 
@@ -41,6 +42,7 @@
                     {{ $training->fin_mois }} - {{ $training->fin_annee }}
                 </div>
             </div>
+            <div>{{ $training->description }}</div>
         </div>
         @endforeach
     </div>

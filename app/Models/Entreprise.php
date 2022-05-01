@@ -14,6 +14,8 @@ class Entreprise extends Model
 
     protected $appends = ['logo_url'];
 
+    protected $with = ['trainings', 'pro_experiences', 'abonnement', 'owner'];
+
 
     public function owner()
     {
