@@ -74,4 +74,9 @@ class User extends Authenticatable
     {
         return $query->where('etat', 0);
     }
+
+    public function getFullNameAttribute() 
+    {
+        return sprintf("%s %s", $this->prenom, strtoupper($this->nom));
+    }
 }

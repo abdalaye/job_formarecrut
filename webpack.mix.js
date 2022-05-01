@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     // .sass('resources/sass/adminlte.scss', 'public/css')
     .sass('resources/sass/frontend.scss', 'public/css')
+    .vue()
     .sourceMaps(true, 'source-map');
