@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\HtmlString;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Entreprise extends Model
 {
@@ -27,21 +28,7 @@ class Entreprise extends Model
         return $this->belongsTo(Abonnement::class);
     }
 
-    public function getLogoUrlAttribute() 
-    {
-        return is_null($this->logo) ? asset('img/logo.png') : '';
-    }  
-
-    public function logoImg($options = [])
-    {
-        $options = array_merge([
-            'size' => '100px',
-            'alt' => '',
-            'class' => '',
-        ], $options);
-
-        return new HtmlString('<img class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
-    } 
+    
 
     public function scopeActive($query)
     {
@@ -68,5 +55,43 @@ class Entreprise extends Model
     public function pro_experiences() 
     {
         return $this->hasMany(ProExperience::class);
+    }
+
+    public function getLogoUrlAttribute() 
+    {
+        return is_null($this->logo) ? asset('img/logo.png') : asset('storage/' .$this->logoDir() . '/' . $this->id . '.' . $this->logo);
+    }  
+
+    public function logoImg($options = [])
+    {
+        $options = array_merge([
+            'size' => '100px',
+            'alt' => '',
+            'class' => '',
+        ], $options);
+
+        return new HtmlString('<img class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
+    } 
+
+    public function logoDir()
+    {
+        return 'recruteurs/logos';
+    }
+
+    public function setLogoAttribute($file) 
+    {
+        if($file->isValid() && $file instanceof UploadedFile) {
+            
+            self::saved(function($instance) use ($file) {
+                $filename = sprintf("%s.%s", $instance->id, $file->getClientOriginalExtension());
+                $file->storePubliclyAs(
+                    $instance->logoDir(),
+                    $filename, 
+                    ['disk' => 'public']
+                );
+            });
+
+            $this->attributes['logo'] = $file->getClientOriginalExtension();
+        }
     }
 }

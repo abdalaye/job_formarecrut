@@ -32,6 +32,7 @@ class EntrepriseRequest extends FormRequest
                 'phone'       => 'required',
                 'adresse'     => 'required',
                 'description' => 'nullable',
+                'logo'        => 'sometimes|image|mimes:png,jpeg,jpg',
             ];
         }
 
