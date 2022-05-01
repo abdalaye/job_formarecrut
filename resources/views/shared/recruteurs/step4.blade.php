@@ -34,7 +34,7 @@
                 <form style="display: inline;" method="post" action="{{ route('admin.recruteurs.removeExperience', ['pro_experience' => $experience->id, 'entreprise' => $recruteur->id]) }}">
                     @method('delete')
                     @csrf
-                    <button type="submit" class="btn btn-link text-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    <button onclick="return confirm('Vous êtes sûr?')" type="submit" class="btn btn-link text-danger btn-xs"><i class="fa fa-trash"></i></button>
                 </form>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <form style="display: inline;" method="post" action="{{ route('admin.recruteurs.removeTraining', ['training' => $training->id, 'entreprise' => $recruteur->id]) }}">
                     @method('delete')
                     @csrf
-                    <button type="submit" class="btn btn-link text-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    <button onclick="return confirm('Vous êtes sûr?')" type="submit" class="btn btn-link text-danger btn-xs"><i class="fa fa-trash"></i></button>
                 </form>
             </div>
         </div>
