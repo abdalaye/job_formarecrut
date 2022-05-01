@@ -67,6 +67,14 @@ Route::middleware(['auth'])->group(function () {
         Route::put("recruteurs/{entreprise}/step2", [App\Http\Controllers\Admin\RecruteursController::class, 'step2'])->name('recruteurs.step2');
         Route::put("recruteurs/{entreprise}/step3", [App\Http\Controllers\Admin\RecruteursController::class, 'step3'])->name('recruteurs.step3');
 
+        Route::delete('recruteurs/{entreprise}/removeExperience/{pro_experience}', [
+            App\Http\Controllers\Admin\RecruteursController::class, 'removeExperience'
+        ])->name('recruteurs.removeExperience');
+
+        Route::delete('recruteurs/{entreprise}/removeTraining/{training}', [
+            App\Http\Controllers\Admin\RecruteursController::class, 'removeTraining'
+        ])->name('recruteurs.removeTraining');
+
 
         Route::get('recruteurs/inactifs', [\App\Http\Controllers\Admin\InactiveRecruitersController::class, 'index'])->name('inactive_recruiters.index');
         Route::get('recruteurs/inactifs/{entreprise}/show', [\App\Http\Controllers\Admin\InactiveRecruitersController::class, 'show'])->name('inactive_recruiters.show');

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Training;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
+use App\Models\ProExperience;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EntrepriseRequest;
 use App\Repositories\EntrepriseRepository;
@@ -87,24 +89,9 @@ class RecruteursController extends Controller
         $currentStep = (int) $request->step;
         
         $recruteur = $this->entrepriseRepo->find($id);
-        
-        foreach($trainings as $training) {
-            $payload = [
-                'formation'     => $training['formation'],
-                'etablissement' => $training['etablissement'],
-                'ville'         => $training['ville'],
-                'debut_mois'    => $training['debut_mois'],
-                'debut_annee'   => $training['debut_annee'],
-                'fin_mois'      => $training['fin_mois'],
-                'fin_annee'     => $training['fin_annee'],
-                'description'   => $training['description'],
-            ];
-            $recruteur->trainings()->updateOrCreate([
-                'formation' => $payload['formation'],
-                'etablissement' => $payload['etablissement'],
-            ], $payload);
-        }
 
+        $this->entrepriseRepo->saveTrainings($trainings, $recruteur);
+        
         return response()->json([
             'success' => true, 
             'target'  => url()->route('admin.recruteurs.edit', [
@@ -124,24 +111,7 @@ class RecruteursController extends Controller
         
         $recruteur = $this->entrepriseRepo->find($id);
 
-        
-        foreach($experiences as $experience) {
-            $payload = [
-                'poste'         => $experience['poste'],
-                'employeur'     => $experience['employeur'],
-                'ville'         => $experience['ville'],
-                'debut_mois'    => $experience['debut_mois'],
-                'debut_annee'   => $experience['debut_annee'],
-                'fin_mois'      => $experience['fin_mois'],
-                'fin_annee'     => $experience['fin_annee'],
-                'description'   => $experience['description'],
-            ];
-
-            $recruteur->pro_experiences()->updateOrCreate([
-                'poste' => $payload['poste'],
-                'employeur' => $payload['employeur'],
-            ], $payload);
-        }
+        $this->entrepriseRepo->saveExperiences($experiences, $recruteur);
 
         return response()->json([
             'success' => true, 
@@ -152,5 +122,23 @@ class RecruteursController extends Controller
             ]),
             'message' => 'Enregistrement effectué'
         ]);
+    }
+
+    public function removeExperience(Entreprise $entreprise, ProExperience $pro_experience)
+    {
+        $pro_experience = $entreprise->pro_experiences()->where('id', $pro_experience->id)->first();
+
+        $pro_experience->delete();
+
+        return back();
+    }
+    
+    public function removeTraining(Entreprise $entreprise, Training $training)
+    {
+        $training = $entreprise->trainings()->where('id', $training->id)->first();
+
+        $training->delete();
+
+        return back();
     }
 }

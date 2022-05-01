@@ -45,4 +45,46 @@ class EntrepriseRepository extends BaseRepository
     {
         return $this->allQuery()->inactive();
     }
+
+    public function saveTrainings($trainings, $recruteur) 
+    {
+        foreach($trainings as $training) {
+            $payload = [
+                'formation'     => $training['formation'],
+                'etablissement' => $training['etablissement'],
+                'ville'         => $training['ville'],
+                'debut_mois'    => $training['debut_mois'],
+                'debut_annee'   => $training['debut_annee'],
+                'fin_mois'      => $training['fin_mois'],
+                'fin_annee'     => $training['fin_annee'],
+                'description'   => $training['description'],
+            ];
+
+            $recruteur->trainings()->updateOrCreate([
+                'formation' => $payload['formation'],
+                'etablissement' => $payload['etablissement'],
+            ], $payload);
+        }
+    }
+
+    public function saveExperiences($experiences, $recruteur)
+    {
+        foreach($experiences as $experience) {
+            $payload = [
+                'poste'         => $experience['poste'],
+                'employeur'     => $experience['employeur'],
+                'ville'         => $experience['ville'],
+                'debut_mois'    => $experience['debut_mois'],
+                'debut_annee'   => $experience['debut_annee'],
+                'fin_mois'      => $experience['fin_mois'],
+                'fin_annee'     => $experience['fin_annee'],
+                'description'   => $experience['description'],
+            ];
+
+            $recruteur->pro_experiences()->updateOrCreate([
+                'poste' => $payload['poste'],
+                'employeur' => $payload['employeur'],
+            ], $payload);
+        }
+    }
 }
