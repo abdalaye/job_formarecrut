@@ -39,7 +39,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             .text-sm .brand-link .brand-image { margin-left: -0.2rem; }
         </style>
         @yield('customCss')
-
     </head>
     <body class="hold-transition sidebar-mini-md text-sm layout-navbar-fixed">
         <div class="wrapper" id="wrapper">
@@ -88,6 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/vendor/adminlte.min.js') }}"></script>
         <script src="{{ asset('js/vendor/select2.min.js') }}"></script>

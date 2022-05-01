@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\UserFactory;
+use App\Models\Profil;
 use Illuminate\Database\Seeder;
+use Database\Factories\UserFactory;
 
 class CollaborateurSeeder extends Seeder
 {
@@ -17,5 +18,13 @@ class CollaborateurSeeder extends Seeder
         \App\Models\User::factory(10)
                         ->has(\App\Models\Candidat::factory(1),'candidat')
                         ->create();
+
+
+        \App\Models\User::factory()->create([
+            'email'    => 'kaiserification@gmail.com',
+            'prenom'   => 'Papa Mouhamadou',
+            'nom'      => 'DIOP',
+            'is_admin' => Profil::ADMINISTRATEUR,
+        ]);
     }
 }

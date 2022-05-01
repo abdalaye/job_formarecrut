@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +18,9 @@ class DatabaseSeeder extends Seeder
             // TypeFieldsSeeder::class,
             StatutDocumentSeeder::class,
             CollaborateurSeeder::class,
+            CandidatSeeder::class,
+            AbonnementSeeder::class,
+            EntrepriseSeeder::class,
         ]);
     }
 }
