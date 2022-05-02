@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="addFormation" tabindex="-1" role="dialog" aria-labelledby="addFormation" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        {!! Form::model(new \App\Models\Formation, ['method' => 'POST', 'route' => ['admin.candidats.formations.store', $candidat], 'class' => 'modal-content']) !!}
+    <div class="modal-dialog" role="document">
+        {!! Form::model($formation, ['method' => 'POST', 'route' => ['admin.candidats.formations.store', $candidat], 'class' => 'modal-content']) !!}
             <div class="modal-header">
                 <h5 class="modal-title">Ajouter une nouvelle formation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="addExperience" tabindex="-1" role="dialog" aria-labelledby="addExperience" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         {!! Form::model(new \App\Models\Experience, ['method' => 'POST', 'route' => ['admin.candidats.experiences.store', $candidat], 'class' => 'modal-content']) !!}
             <div class="modal-header">
                 <h5 class="modal-title">Ajouter une nouvelle expérience professionnelle</h5>

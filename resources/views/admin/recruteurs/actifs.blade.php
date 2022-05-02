@@ -6,8 +6,6 @@
 @section('content')
     <!-- Dropdown - User Information -->
 
-
-
     @section('tableHeader')
         <tr>
             <td>N°</td>
@@ -15,6 +13,7 @@
             <td>Adresse</td>
             <td>Nombre d'employés</td>
             <td>Numéro de téléphone</td>
+            <td>Statut</td>
             <td>Logo</td>
             <td>Actions</td>
         </tr>
@@ -29,14 +28,11 @@
             <td>{{ $recruteur->adresse ?? '---' }}</td>
             <td>{{ $recruteur->n_employers }}</td>
             <td>{{ $recruteur->phone ?? '---' }}</td>
+            <td>{{ $recruteur->status_badge }}</td>
             <td>{{ $recruteur->logoImg(['size' => '50px']) }}</td>
             <td>
-                <a href="{{ route('admin.recruteurs.show', $recruteur->id) }}" id="{{ $recruteur->id }}" class="btn btn-primary btn-sm user">
+                <a href="{{ route('admin.recruteurs.show', $recruteur->id) }}" id="{{ $recruteur->id }}" class="btn btn-light btn-xs user">
                     <i class="fa fa-eye"></i>
-                </a>
-
-                <a href="{{ route('admin.recruteurs.edit', $recruteur->id) }}" id="{{ $recruteur->id }}" class="btn btn-primary btn-sm user">
-                    <i class="fa fa-edit"></i>
                 </a>
             </td>
         </tr>

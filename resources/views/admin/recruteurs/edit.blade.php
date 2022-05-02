@@ -5,10 +5,6 @@
     @section('actions')
         <a href="javascript:history.back();" class="btn btn-light btn-sm rounded small"><i class="fas fa-angle-left m-2"></i> Retour</a> 
     @endsection
-    @php
-        $step = (int) request('step', 1);
-
-    @endphp
     <div class="col-12">
         <ul class="step d-flex flex-nowrap rounded py-3 bg-white shadow-sm">
             <li class="step-item {{ $step === 1 ? 'active' : '' }}">
