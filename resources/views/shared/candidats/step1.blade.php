@@ -121,8 +121,7 @@
 
     <div class="text-right rounded px-2 py-3 border col-md-12">
         <button type="submit" name="action" value="save" class="btn btn-outline-primary mx-2">Enregistrer</button>
-        <button type="submit" name="action" value="next" class="btn btn-outline-secondary ml-2">Suivant <i
-                class="fas fa-arrow-circle-right ml-2"></i></button>
+        <button type="submit" name="action" value="next" class="btn btn-outline-secondary ml-2">Suivant <i class="fas fa-arrow-circle-right ml-2"></i></button>
     </div>
 
 </form>

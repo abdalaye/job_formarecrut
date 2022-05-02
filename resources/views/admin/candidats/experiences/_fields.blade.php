@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            {!! Form::label('titre', 'Formation', ['class' => 'control-label']) !!}
-            {!! Form::text('titre', null, ['class' => 'form-control '.errorField($errors, 'titre')]) !!}
-            @error('titre') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            {!! Form::label('poste', 'Poste', ['class' => 'control-label']) !!}
+            {!! Form::text('poste', null, ['class' => 'form-control '.errorField($errors, 'poste')]) !!}
+            @error('poste') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
     </div>
 </div>
@@ -12,11 +12,12 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            {!! Form::label('etablissement', 'Etablissement', ['class' => 'control-label']) !!}
-            {!! Form::text('etablissement', null, ['class' => 'form-control '.errorField($errors, 'etablissement')]) !!}
-            @error('etablissement') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            {!! Form::label('employeur', 'Employeur', ['class' => 'control-label']) !!}
+            {!! Form::text('employeur', null, ['class' => 'form-control '.errorField($errors, 'employeur')]) !!}
+            @error('employeur') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
     </div>
+    
 </div>
 
 <div class="row">
@@ -49,15 +50,7 @@
 
     <div class="col-6">
         <div class="form-group">
-            <div class="d-flex align-items-center justify-content-between">
-                {!! Form::label('date_fin', 'Date de fin', ['class' => 'control-label']) !!}
-
-                <div class="custom-control custom-checkbox">
-                    {!! Form::checkbox('en_cours', '1', true, ['class' => 'custom-control-input']) !!}
-                    {!! Form::label('en_cours', 'Présent', ['class' => 'custom-control-label']) !!}
-                </div>
-            </div>
-
+            {!! Form::label('date_fin', 'Date de fin', ['class' => 'control-label']) !!}
             {!! Form::date('date_fin', null, ['class' => 'form-control '.errorField($errors, 'date_fin')]) !!}
             @error('date_fin') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
@@ -73,4 +66,3 @@
         </div>
     </div>
 </div>
-

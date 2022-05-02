@@ -25,16 +25,16 @@ class CandidatStep1Request extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required|max:255',
-            'prenom' => 'required|max:255',
-            'photo_upload' => 'nullable|image|max:2048',
-            'telephone' => 'required|max:20',
-            'genre' => 'required',
+            'nom'            => 'required|max:255',
+            'prenom'         => 'required|max:255',
+            'photo_upload'   => 'nullable|image|max:2048',
+            'telephone'      => 'required|max:20',
+            'genre'          => 'required',
             'date_naissance' => 'required',
             'lieu_naissance' => 'required',
-            'adresse' => 'required',
-            'country_id' => 'required',
-            'city_id' => 'required',
+            'adresse'        => 'required',
+            'country_id'     => 'required',
+            'city_id'        => 'required',
         ];
     }
 }

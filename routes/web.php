@@ -61,10 +61,26 @@ Route::middleware(['auth'])->group(function () {
             \App\Http\Controllers\Admin\CandidatFormationController::class, 'store'
         ])->name('candidats.formations.store');
 
+        Route::put('candidats/{candidat}/formations/{formation}/update', [
+            \App\Http\Controllers\Admin\CandidatFormationController::class, 'update'
+        ])->name('candidats.formations.update');
 
-        Route::delete('candidats/{candidat}/formations/{training}/destroy', [
+        Route::delete('candidats/{candidat}/formations/{formation}/destroy', [
             \App\Http\Controllers\Admin\CandidatFormationController::class, 'destroy'
         ])->name('candidats.formations.destroy');
+
+
+        Route::post('candidats/{candidat}/experiences/create', [
+            \App\Http\Controllers\Admin\CandidatExperienceController::class, 'store'
+        ])->name('candidats.experiences.store');
+
+        Route::put('candidats/{candidat}/experiences/{experience}/update', [
+            \App\Http\Controllers\Admin\CandidatExperienceController::class, 'update'
+        ])->name('candidats.experiences.update');
+
+        Route::delete('candidats/{candidat}/experiences/{experience}/destroy', [
+            \App\Http\Controllers\Admin\CandidatExperienceController::class, 'destroy'
+        ])->name('candidats.experiences.destroy');
 
 
         Route::get("recruteurs/complets", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('recruteurs.actifs');

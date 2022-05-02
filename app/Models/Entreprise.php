@@ -52,9 +52,9 @@ class Entreprise extends Model
         return $this->hasMany(Training::class);
     }
 
-    public function pro_experiences() 
+    public function experiences() 
     {
-        return $this->hasMany(ProExperience::class);
+        return $this->hasMany(Experience::class);
     }
 
     public function getLogoUrlAttribute() 

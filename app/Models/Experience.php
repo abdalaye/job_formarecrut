@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Training extends Model
+class Experience extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'formation',
-        'etablissement',
+        'poste',
+        'employeur',
         'ville',
         'date_debut',
         'date_fin',
         'description',
+        'city_id',
+        'country_id',
     ];
 
-    protected $appends = ['date_debut', 'date_fin'];
 
     public function entreprise() 
     {
@@ -28,5 +29,15 @@ class Training extends Model
     public function candidat() 
     {
         return $this->belongsTo(Candidat::class);
+    }
+
+    public function country() 
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function city() 
+    {
+        return $this->belongsTo(City::class);
     }
 }
