@@ -18,10 +18,8 @@ class CreateTrainingsTable extends Migration
             $table->string('formation');
             $table->string('etablissement');
             $table->string('ville');
-            $table->string('debut_mois', 2);
-            $table->string('debut_annee', 4);
-            $table->string('fin_mois', 2);
-            $table->string('fin_annee', 4);
+            $table->date('date_debut');
+            $table->date('date_fin');
             $table->longText('description');
             $table->timestamps();
         });

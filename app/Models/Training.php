@@ -13,10 +13,8 @@ class Training extends Model
         'formation',
         'etablissement',
         'ville',
-        'debut_mois',
-        'debut_annee',
-        'fin_mois',
-        'fin_annee',
+        'date_debut',
+        'date_fin',
         'description',
     ];
 
@@ -27,13 +25,8 @@ class Training extends Model
         return $this->belongsTo(Entreprise::class);
     }
 
-    public function getDateDebutAttribute() 
+    public function candidat() 
     {
-        return sprintf("%s %s", \getMonthByValue($this->debut_mois), $this->debut_annee);
-    }
-
-    public function getDateFinAttribute() 
-    {
-        return sprintf("%s %s", \getMonthByValue($this->fin_mois), $this->fin_annee);
+        return $this->belongsTo(Candidat::class);
     }
 }

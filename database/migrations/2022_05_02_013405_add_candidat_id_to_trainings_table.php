@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEntrepriseIdToTrainingsTable extends Migration
+class AddCandidatIdToTrainingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddEntrepriseIdToTrainingsTable extends Migration
     public function up()
     {
         Schema::table('trainings', function (Blueprint $table) {
-            $table->foreignId('entreprise_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('candidat_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -26,8 +26,8 @@ class AddEntrepriseIdToTrainingsTable extends Migration
     public function down()
     {
         Schema::table('trainings', function (Blueprint $table) {
-            $table->dropForeign('entreprise_id');
-            $table->dropColumn('entreprise_id');
+            $table->dropForeign('candidat_id');
+            $table->dropColumn('candidat_id');
         });
     }
 }

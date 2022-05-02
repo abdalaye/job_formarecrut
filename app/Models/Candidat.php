@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Candidat extends Model
 {
     use HasFactory;
+    
     protected $guarded = ['id'];
 
     public function user()
@@ -33,6 +34,11 @@ class Candidat extends Model
     public function situation()
     {
         return $this->belongsTo(Situation::class);
+    }
+
+    public function formations() 
+    {
+        return $this->hasMany(Training::class);
     }
 
     public function getSexeAttribute()

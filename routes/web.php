@@ -57,6 +57,16 @@ Route::middleware(['auth'])->group(function () {
         Route::patch("candidats/{candidat}/step3", [App\Http\Controllers\Admin\CandidatsController::class, 'step3'])->name('candidats.step3');
 
 
+        Route::post('candidats/{candidat}/formations/create', [
+            \App\Http\Controllers\Admin\CandidatFormationController::class, 'store'
+        ])->name('candidats.formations.store');
+
+
+        Route::delete('candidats/{candidat}/formations/{training}/destroy', [
+            \App\Http\Controllers\Admin\CandidatFormationController::class, 'destroy'
+        ])->name('candidats.formations.destroy');
+
+
         Route::get("recruteurs/complets", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('recruteurs.actifs');
         Route::get("recruteurs/incomplets", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('recruteurs.inactifs');
         Route::get("recruteurs/{entreprise}/profil", [App\Http\Controllers\Admin\RecruteursController::class, 'show'])->name('recruteurs.show');
@@ -64,21 +74,6 @@ Route::middleware(['auth'])->group(function () {
         Route::put("recruteurs/{entreprise}/step1", [App\Http\Controllers\Admin\RecruteursController::class, 'step1'])->name('recruteurs.step1');
         Route::put("recruteurs/{entreprise}/step2", [App\Http\Controllers\Admin\RecruteursController::class, 'step2'])->name('recruteurs.step2');
         Route::put("recruteurs/{entreprise}/step3", [App\Http\Controllers\Admin\RecruteursController::class, 'step3'])->name('recruteurs.step3');
-
-        Route::delete('recruteurs/{entreprise}/removeExperience/{pro_experience}', [
-            App\Http\Controllers\Admin\RecruteursController::class, 'removeExperience'
-        ])->name('recruteurs.removeExperience');
-
-        Route::delete('recruteurs/{entreprise}/removeTraining/{training}', [
-            App\Http\Controllers\Admin\RecruteursController::class, 'removeTraining'
-        ])->name('recruteurs.removeTraining');
-
-
-        Route::get('recruteurs/inactifs', [\App\Http\Controllers\Admin\InactiveRecruitersController::class, 'index'])->name('inactive_recruiters.index');
-        Route::get('recruteurs/inactifs/{entreprise}/show', [\App\Http\Controllers\Admin\InactiveRecruitersController::class, 'show'])->name('inactive_recruiters.show');
-
-
-        Route::get("recruteurs/inactifs", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('entreprises.inactifs');
     });
 
     Route::prefix("collaborateurs")
