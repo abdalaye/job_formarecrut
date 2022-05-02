@@ -1,8 +1,11 @@
 @section('title', 'Candidats - Expériences')
 
 @section('actions')
-    <button type="button" data-toggle="modal" data-target="#addExperience" class="btn btn-primary">Ajouter une nouvelle expérience</button>
-    @include('admin.candidats.experiences.create')
+    <div>
+        <a href="javascript:history.back();" class="btn btn-light rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
+        <button type="button" data-toggle="modal" data-target="#addExperience" class="btn btn-primary">Ajouter une nouvelle expérience</button>
+        @include('admin.candidats.experiences.create')
+    </div>
 @endsection
 
 

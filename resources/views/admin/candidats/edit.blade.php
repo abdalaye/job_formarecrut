@@ -8,7 +8,7 @@
                 <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 1, 'hash' => sha1($candidat->id)]) }}">Informations personnelles</a>
             </li>
             <li class="step-item {{ $step == 2 ? 'active' : '' }}">
-                <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 2, 'hash' => sha1($candidat->id)]) }}">Formations</a>
+                <a href="#!">Formations</a>
             </li>
             <li class="step-item {{ $step == 3 ? 'active' : '' }}">
                 <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 3, 'hash' => sha1($candidat->id)]) }}">Expériences professionnelles</a>

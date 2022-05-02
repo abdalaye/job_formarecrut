@@ -35,6 +35,7 @@ class CandidatStep1Request extends FormRequest
             'adresse'        => 'required',
             'country_id'     => 'required',
             'city_id'        => 'required',
+            'info'           => 'nullable',
         ];
     }
 }

@@ -31,7 +31,8 @@ class CandidatFactory extends Factory
             'country_id' => 1,
             'statut' => rand(1, 0),
             'user_id' => User::factory(),
-            'date_naissance' => $this->faker->date()
+            'date_naissance' => $this->faker->date(),
+            'lieu_naissance' => $this->faker->city(),
         ];
     }
 }

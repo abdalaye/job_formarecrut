@@ -51,7 +51,6 @@ class CandidatsController extends Controller
         $step = (int) request('step', 1);
 
         if($step == 2) {
-
         } elseif($step == 3) {
             if($candidat->formations()->count() == 0) {
                 return back()->with('error', 'Veuillez ajouter au moins une formation.');
@@ -72,12 +71,14 @@ class CandidatsController extends Controller
         if($this->candidatRepository->updateStep1($candidat, $data)) {
             $action = request("action") ?? null;
             session()->flash("success", __('actions.update.success'));
+
             if($action && $action == "next") {
                 return redirect()->route("admin.candidats.edit", ['candidat' => $candidat, "step" => 2, "hash" => sha1($candidat->id)]);
             }
         } else {
             session()->flash("error", __('actions.update.error'));
         }
+
         return back();
     }
 }

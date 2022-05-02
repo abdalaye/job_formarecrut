@@ -9,9 +9,9 @@
     class="row">
     @csrf
     @method("PATCH")
-    <div class="col-md-12">
+    <div class="col-12">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-6">
                 <div class="form-group">
                     <label for="photo_upload"
                         class="d-block {{ $candidat->photo ? 'border p-3' : 'jumbotron' }} text-center">
@@ -38,10 +38,10 @@
                     </label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
                 <div class="row">
                     <x-input-form-group
-                        col='col-md-6'
+                        col='col-6'
                         name='prenom'
                         label='Prénom'
                         required='true'
@@ -49,7 +49,7 @@
                     </x-input-form-group>
 
                     <x-input-form-group
-                        col='col-md-6'
+                        col='col-6'
                         name='nom'
                         label='Nom de famille'
                         required='true'
@@ -57,7 +57,7 @@
                     </x-input-form-group>
 
                     <x-input-form-group
-                        col='col-md-6'
+                        col='col-6'
                         name='telephone'
                         label='Numéro de téléphone'
                         required='true'
@@ -67,7 +67,7 @@
                     <x-select-form-group
                         :options='$_genres'
                         display='name'
-                        col='col-md-6'
+                        col='col-6'
                         label='Sexe'
                         name='genre'
                         required='true'
@@ -79,7 +79,7 @@
     </div>
 
     @include('partials.components.inputFormGroupElement', [
-        'col' => 'col-md-4',
+        'col' => 'col-4',
         'name' => 'date_naissance',
         'label' => 'Date de naissance',
         'type' => 'date',
@@ -88,7 +88,7 @@
     ])
 
     @include('partials.components.inputFormGroupElement', [
-        'col' => 'col-md-4',
+        'col' => 'col-4',
         'name' => 'lieu_naissance',
         'label' => 'Lieu de naissance',
         'required' => true,
@@ -96,7 +96,7 @@
     ])
 
     @include('partials.components.inputFormGroupElement', [
-        'col' => 'col-md-4',
+        'col' => 'col-4',
         'name' => 'adresse',
         'label' => 'Adresse physique',
         'value' => old('adresse') ?? $candidat->adresse,
@@ -105,7 +105,7 @@
     @include('partials.components.selectFormGroupElement', [
         'options' => $_countries,
         'display' => 'name',
-        'col' => 'col-md-6',
+        'col' => 'col-6',
         'label' => 'Pays',
         'name' => 'country_id',
         'value' => old('country_id') ?? $candidat->country_id,
@@ -113,13 +113,23 @@
     @include('partials.components.selectFormGroupElement', [
         'options' => $_cities,
         'display' => 'name',
-        'col' => 'col-md-6',
+        'col' => 'col-6',
         'label' => 'Ville',
         'name' => 'city_id',
         'value' => old('city_id') ?? $candidat->city_id,
     ])
 
-    <div class="text-right rounded px-2 py-3 border col-md-12">
+
+    <div class="form-group col-12">
+        <label for="info" class="control-label">Infos</label>
+        <textarea name="info" id="info" cols="30" rows="5" class="form-control {{ errorField($errors, 'info') }}">{{ old('info') ?? $candidat->info }}</textarea>
+        @error('info') <span class="invalid-feedback">{{ $message }}</span>@enderror
+        <span class="form-text text-muted">
+            Vous pouvez évoquer votre expérience, votre domaine d’activité ou vos compétences. Certains choisissent aussi de parler de leurs accomplissements ou de leurs postes précédents.
+        </span>
+    </div>
+
+    <div class="text-right rounded px-2 py-3 border col-12">
         <button type="submit" name="action" value="save" class="btn btn-outline-primary mx-2">Enregistrer</button>
         <button type="submit" name="action" value="next" class="btn btn-outline-secondary ml-2">Suivant <i class="fas fa-arrow-circle-right ml-2"></i></button>
     </div>

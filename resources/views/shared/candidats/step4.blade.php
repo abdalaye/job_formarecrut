@@ -1,5 +1,9 @@
 @section('title', 'Candidat - Visualisation du CV')
 
+@section('actions')
+<a href="javascript:history.back();" class="btn btn-light rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
+@endsection
+
 <div class="cv-preview">
     <div class="cv-preview__header mb-4">
         <div class="mb-2">
@@ -17,8 +21,9 @@
     <div class="cv-preview-content col-9">
         <div class="cv-preview-item">
             <h2 class="cv-preview-item__heading">Profil</h2>
-            <p>{{ $candidat->description }}</p>
+            <p>{{ $candidat->info }}</p>
         </div>
+
 
         @if($candidat->experiences()->count())
         <h1>Expériences professionnelles</h1>
