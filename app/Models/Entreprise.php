@@ -15,7 +15,7 @@ class Entreprise extends Model
 
     protected $appends = ['logo_url'];
 
-    protected $with = ['trainings', 'pro_experiences', 'abonnement', 'owner'];
+    protected $with = ['abonnement', 'owner'];
 
 
     public function owner()
@@ -27,8 +27,6 @@ class Entreprise extends Model
     {
         return $this->belongsTo(Abonnement::class);
     }
-
-    
 
     public function scopeActive($query)
     {
@@ -45,16 +43,6 @@ class Entreprise extends Model
         if($this->statut) return new HtmlString('<span class="badge badge-success">Actif</span>');
         
         return new HtmlString('<span class="badge badge-success">Inactif</span>');
-    }
-
-    public function trainings() 
-    {
-        return $this->hasMany(Training::class);
-    }
-
-    public function experiences() 
-    {
-        return $this->hasMany(Experience::class);
     }
 
     public function getLogoUrlAttribute() 
