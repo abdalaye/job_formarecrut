@@ -34,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
         {{-- Reglage CSS ADMIN LTE --}}
         <style>
             .dropdown-toggle::after {color: white}
@@ -101,6 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{-- <script src="{{ asset('js/vendor/chart.js/Chart.min.js') }}"></script> --}}
         <script src="{{ asset('js/vendor/toastr.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
         {{-- SWEET ALERT --}}
@@ -145,5 +148,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @stack('scripts')
         @yield('partialScript')
         @yield('scriptBottom')
+
+        <script>
+            flatpickr('input[type="date"]');
+        </script>
     </body>
 </html>

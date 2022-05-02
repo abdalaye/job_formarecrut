@@ -1,4 +1,4 @@
-@section('title', 'Candidats - Expériences')
+@section('title', 'Candidats - Expériences professionnelles')
 
 @section('actions')
     <div>
