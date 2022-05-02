@@ -15,15 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(Auth::check()) {
-        return redirect()->route("home");
-    }
-    return redirect()->route('login');
+    return view("welcome");
 });
 
 Auth::routes(['register' => false]);
 
-Route::get('/tableau-de-bord', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tableau-de-bord', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/compte', function() {

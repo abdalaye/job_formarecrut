@@ -10017,3 +10017,90 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.container {
+  z-index: 100;
+}
+
+.bg_login {
+  background-color: #515151;
+}
+
+.login_form {
+  background-color: white !important;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 85%;
+}
+.login_form .card__login {
+  border: none !important;
+  max-width: 90%;
+}
+.login_form .card__login .card-body {
+  border-left: 2px solid #515151;
+}
+.login_form .title {
+  font-size: 18px;
+}
+.login_form .title, .login_form .subTitle {
+  font-weight: bolder;
+  color: #515151;
+  margin: 0;
+}
+.login_form input.form-control {
+  border: 1px solid rgba(81, 81, 81, 0.5);
+  background-color: white;
+}
+.login_form .img img {
+  max-width: 75%;
+}
+.login_form .text-primary, .login_form .small {
+  color: #E36835 !important;
+}
+.login_form .text-secondary {
+  color: #515151 !important;
+}
+
+.btn__login {
+  background-color: #E36835;
+  border: none;
+  color: white;
+}
+.btn__login:hover, .btn__login:focus, .btn__login:active {
+  background-color: #e0571f;
+  color: white;
+}
+
+.bg-floue {
+  filter: blur(10px);
+}
+
+.bg-img__cover {
+  background: linear-gradient(90deg, rgba(22, 9, 3, 0.8), rgba(22, 9, 3, 0.8)), url("/img/frontend_images/login.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay_img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 100% !important;
+  }
+
+  .login_form {
+    max-width: 100% !important;
+  }
+  .login_form .card__login {
+    max-width: 95% !important;
+  }
+}
+
+/*# sourceMappingURL=app.css.map*/
