@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade text-left" id="editExperience{{ $experience->id }}" tabindex="-1" role="dialog" aria-labelledby="editExperience{{ $experience->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         {!! Form::model($experience, ['method' => 'PUT', 'route' => ['admin.candidats.experiences.update', ['candidat' => $candidat->id, 'experience' => $experience->id]], 'class' => 'modal-content']) !!}
             <div class="modal-header">
                 <h5 class="modal-title">Modifier l'expérience <span class="text-success">{{ $experience->poste }}</span></h5>

@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade text-left" id="editFormation{{ $formation->id }}" tabindex="-1" role="dialog" aria-labelledby="editFormation{{ $formation->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         {!! Form::model($formation, ['method' => 'PUT', 'route' => ['admin.candidats.formations.update', ['candidat' => $candidat->id, 'formation' => $formation->id]], 'class' => 'modal-content']) !!}
             <div class="modal-header">
                 <h5 class="modal-title">Modifier la formation <span class="text-success">{{ $formation->formation }}</span></h5>

@@ -104,6 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="{{ asset('js/vendor/toastr.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 
 
         {{-- SWEET ALERT --}}
@@ -150,7 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @yield('scriptBottom')
 
         <script>
-            flatpickr('input[type="date"]');
+            flatpickr('input[type="date"]', { locale: 'fr' });
         </script>
     </body>
 </html>
