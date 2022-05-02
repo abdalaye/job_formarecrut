@@ -24,10 +24,9 @@ class RecruteursController extends Controller
         return view('admin.recruteurs.actifs', compact('recruteurs'));
     }
 
-
     public function inactifs()
     {
-        $recruteurs = $this->entrepriseRepo->active()->get();
+        $recruteurs = $this->entrepriseRepo->inactive()->get();
 
         return view('admin.recruteurs.inactifs', compact('recruteurs'));
     }
