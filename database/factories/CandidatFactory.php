@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Candidat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,6 +29,8 @@ class CandidatFactory extends Factory
             'adresse' => $this->faker->text(14),
             'genre' => rand(1, 2),
             'country_id' => 1,
+            'statut' => rand(1, 0),
+            'user_id' => User::factory(),
             'date_naissance' => $this->faker->date()
         ];
     }

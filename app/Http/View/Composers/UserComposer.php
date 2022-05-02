@@ -32,6 +32,8 @@ class UserComposer {
                 '_countries' => $_countries,
                 '_cities' => $_cities,
                 '_genres' => self::getGenresSelect(),
+                '_months' => self::getMonthsSelect(),
+                '_years' => self::getYearsSelect(),
                 // '_document_traites' => self::getDocumentsByStatutByCollaborateur(2), // statut en traitement 2
                 // '_type_documents' => $type_documents,
                 // '_document_tranmis' => self::getDocumentsByStatutByCollaborateur(3,3), //approuve 3, transmis 3 (validation_statut)
@@ -46,6 +48,29 @@ class UserComposer {
                 ['id' => 2, 'name' => 'Femme'],
             ])
         );
+    }
+
+    static function getMonthsSelect() 
+    {
+        return \getMonths();
+    }
+
+    static function getYearsSelect() 
+    {
+        $options   = [];
+        $startYear = (int) now()->addYears('-65')->format('Y');
+        $now       = (int) now()->format('Y');
+
+        $options[] = ['name' => 'Année', 'value' => ''];
+        
+        for($i = $now; $i >= $startYear; $i--) {
+            $options[] = [
+                'name' => $i,
+                'value' => $i
+            ];
+        }
+
+        return $options;
     }
 
 }

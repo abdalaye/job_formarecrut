@@ -46,12 +46,12 @@ class MenusController extends Controller
                     "items" => [
                         [
                             "name" => "Actifs",
-                            "route" => "admin.entreprises.actifs",
+                            "route" => "admin.recruteurs.actifs",
                             // "variableCount" => "_nombre_brouillons_menu",
                         ],
                         [
                             "name" => "Inactifs",
-                            "route" => "admin.entreprises.inactifs",
+                            "route" => "admin.recruteurs.inactifs",
                             // "variableCount" => "_nombre_soumis_menu",
                         ]
                     ]
