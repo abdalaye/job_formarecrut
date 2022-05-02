@@ -52,9 +52,10 @@
             <div class="d-flex align-items-center justify-content-between">
                 {!! Form::label('date_fin', 'Date de fin', ['class' => 'control-label']) !!}
 
-                <div class="custom-control custom-checkbox">
-                    {!! Form::checkbox('en_cours', '1', true, ['class' => 'custom-control-input']) !!}
-                    {!! Form::label('en_cours', 'Présent', ['class' => 'custom-control-label']) !!}
+                <div class="custom-control custom-switch">
+                    {!! Form::hidden('en_cours', '0') !!}
+                    {!! Form::checkbox('en_cours', '1', $formation->en_cours, ['class' => 'custom-control-input', 'id' => 'en_cours' . ($formation->id ?: '')]) !!}
+                    {!! Form::label('en_cours' . ($formation->id ?: ''), 'Présent', ['class' => 'custom-control-label']) !!}
                 </div>
             </div>
 

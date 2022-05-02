@@ -1,8 +1,8 @@
 @section('title', 'Candidats - Formations')
 
 @section('actions')
-    <button type="button" data-toggle="modal" data-target="#addFormation" class="btn btn-primary">Ajouter une nouvelle formation</button>
-    @include('admin.candidats.formations.create')
+    <button type="button" data-toggle="modal" data-target="#addFormation" class="btn btn-primary btn-sm rounded small">Ajouter une nouvelle formation</button>
+    @include('admin.candidats.formations.create', ['formation' => new \App\Models\Formation])
 @endsection
 
 
@@ -16,6 +16,7 @@
     <td>Ville</td>
     <td>Date de début</td>
     <td>Date de fin</td>
+    <td>En cours</td>
     <td class="text-center">Actions</td>
 </tr>
 @endsection
@@ -31,6 +32,7 @@
     <td>{{ $formation->city->name }}</td>
     <td>{{ $formation->date_debut }}</td>
     <td>{{ $formation->date_fin }}</td>
+    <td>{{ $formation->en_cours }}</td>
     <td class="text-center">
         <a href="#" data-toggle="modal" data-target="#showFormation{{ $formation->id }}" class="btn btn-light btn-xs"><i class="fa fa-eye"></i></a>
         <a href="#" data-toggle="modal" data-target="#editFormation{{ $formation->id }}" class="btn btn-light btn-xs"><i class="fa fa-edit"></i></a>

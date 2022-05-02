@@ -75,7 +75,7 @@ class RecruteursController extends Controller
                 'entreprise' => $recruteur->id, 
                 'step' => $request->action === 'next' ? $currentStep + 1 : $currentStep, 
                 'hash' => sha1($recruteur->id),
-            ]);
+            ])->with('success', __('actions.update.success'));
         } else {
             return back()->withError(__('actions.update.error'));
         }

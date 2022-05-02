@@ -42,7 +42,7 @@ class Entreprise extends Model
     {
         if($this->statut) return new HtmlString('<span class="badge badge-success">Actif</span>');
         
-        return new HtmlString('<span class="badge badge-success">Inactif</span>');
+        return new HtmlString('<span class="badge badge-danger">Inactif</span>');
     }
 
     public function getLogoUrlAttribute() 

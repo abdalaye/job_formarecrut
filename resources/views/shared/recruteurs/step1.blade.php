@@ -1,5 +1,5 @@
 <form action="{{ route('admin.recruteurs.step1', $recruteur) }}" enctype="multipart/form-data" method="post"
-    class="row" novalidate>
+    class="row">
 
     @csrf
     @method('put')
@@ -44,6 +44,7 @@
             <div class="col-6">
                 <div class="row">
                     <input type="hidden" name="step" value="1">
+
                     <x-input-form-group
                         col='col-6'
                         name='nom'
@@ -101,7 +102,7 @@
 
     <div class="form-group col-12">
         <label for="description" class="control-label">Description <span class="text-danger">*</span></label>
-        <textarea name="description" id="description" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror"></textarea>
+        <textarea name="description" id="description" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror">{{ $recruteur->description }}</textarea>
         @error('description') <span class="invalid-feedback">{{ $message }}</span> @enderror
     </div>
 
