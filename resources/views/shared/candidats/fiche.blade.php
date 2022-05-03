@@ -20,8 +20,9 @@
                                             <x-profile-item label="Nom de famille" :value="$candidat->nom" />
                                             <x-profile-item label="Adresse email" :value="$candidat->user->email" />
                                             <x-profile-item label="Numéro de téléphone" :value="$candidat->telephone" />
-                                            <x-profile-item label="Adresse physique" :value="$candidat->address" />
-                                            <x-profile-item label="Ville/Région" :value="$candidat->city->name . '/'. $candidat->country->name" />
+                                            <x-profile-item label="Adresse physique" :value="$candidat->adresse" />
+                                            <x-profile-item label="Ville" :value="$candidat->city->name ?? '---'" />
+                                            <x-profile-item label="Pays" :value="$candidat->country->name ?? '---'" />
                                             <x-profile-item label="Date de naissance" :value="$candidat->date_naissance" />
                                             <x-profile-item label="Lieu de naissance" :value="$candidat->lieu_naissance" />
                                             <x-profile-item label="Sexe" :value="$candidat->sexe" />
