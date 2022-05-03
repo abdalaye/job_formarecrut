@@ -68,7 +68,7 @@
     <div class="col-12">
         <div class="form-group">
             {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control '.errorField($errors, 'description'), 'rows' => 5]) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control '.errorField($errors, 'description'), 'rows' => 5, 'data-editor' => true]) !!}
             @error('description') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
     </div>

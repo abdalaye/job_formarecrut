@@ -13,6 +13,16 @@ class Candidat extends Model
     
     protected $guarded = ['id'];
 
+    protected $with = [
+        'user', 
+        'country', 
+        'city', 
+        'niveau_etude', 
+        'situation', 
+        'formations', 
+        'experiences'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

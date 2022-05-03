@@ -10,7 +10,6 @@
         <tr>
             <td>N°</td>
             <td style="width:100px !important">Nom</td>
-            <td>Adresse</td>
             <td>Nombre d'employés</td>
             <td>Numéro de téléphone</td>
             <td>Statut</td>
@@ -25,7 +24,6 @@
         <tr>
             <td>{{ $loop->index + 1 }} </td>
             <td>{{ $recruteur->nom ?? '---' }}</td>
-            <td>{{ $recruteur->adresse ?? '---' }}</td>
             <td>{{ $recruteur->n_employers }}</td>
             <td>{{ $recruteur->phone ?? '---' }}</td>
             <td>{{ $recruteur->status_badge }}</td>

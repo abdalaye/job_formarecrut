@@ -41,6 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             .dropdown-toggle::after {color: white}
             .select2-container { width: 100% !important; }
             .text-sm .brand-link .brand-image { margin-left: -0.2rem; }
+            .card-body { padding: 10px; }
         </style>
         @yield('customCss')
     </head>
@@ -106,7 +107,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 
-
         {{-- SWEET ALERT --}}
         {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
         {{-- <script src="https://cdn.ckeditor.com/4.14.0/standard-all/ckeditor.js"></script>
@@ -151,7 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @yield('scriptBottom')
 
         <script>
-            flatpickr('input[type="date"]', { locale: 'fr' });
+            flatpickr('input[type="date"]', { locale: 'fr'});
         </script>
     </body>
 </html>

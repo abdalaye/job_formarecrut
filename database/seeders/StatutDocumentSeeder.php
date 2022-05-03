@@ -50,6 +50,6 @@ class StatutDocumentSeeder extends Seeder
             array('id' => '11','name' => 'Agriculture','statut' => '1','created_at' => '2021-06-24 15:10:17','updated_at' => '2021-06-24 15:10:17'),
             array('id' => '12','name' => 'Maîchage','statut' => '1','created_at' => '2021-06-24 15:10:31','updated_at' => '2021-06-24 15:10:31'),
             array('id' => '13','name' => 'Finances','statut' => '1','created_at' => '2021-06-24 15:12:28','updated_at' => '2021-06-24 15:12:28')
-            ));
+        ));
     }
 }

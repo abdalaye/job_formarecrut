@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CandidatStep1Request;
-use App\Http\Requests\CandidatUpdateRequest;
 use App\Models\Candidat;
 use App\Repositories\CandidatRepository;
-use Illuminate\Http\Request;
 
 class CandidatsController extends Controller
 {
