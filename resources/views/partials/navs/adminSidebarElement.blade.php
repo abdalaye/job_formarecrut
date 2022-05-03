@@ -38,7 +38,11 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
             </div>
         </div> --}}
         <nav class="mt-2 sidebar-nav" style="height: auto">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <a href="#" class="btn btn-secondary text-white btn-block rounded shadow">
+                <i class="fas fa-plus-circle mr-2"></i>
+                Catalogue candidats
+            </a>
+            {{-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
                     <a href="#" class="nav-link btn-secondary text-white">
@@ -48,7 +52,7 @@ $ref = isset($explode_path[2]) ? $explode_path[2] : null;
                         </p>
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
         </nav>
         <form method="GET" action="{{ route('search') }}" class="form-inline px-2 shadow-sm pb-2">
             <div class="input-group my-1 mt-2" data-widget="sidebar-search">

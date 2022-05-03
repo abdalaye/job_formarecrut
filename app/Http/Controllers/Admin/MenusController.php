@@ -113,6 +113,10 @@ class MenusController extends Controller
                             "route" => "admin.secteurs.index"
                         ],
                         [
+                            "name" => "FAQs",
+                            "route" => "admin.faqs.index"
+                        ],
+                        [
                             "name" => "Niveaux études",
                             "route" => "admin.niveau_etudes.index"
                         ],
