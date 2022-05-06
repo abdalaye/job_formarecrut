@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16" />
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
@@ -32,11 +34,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
         {{-- Reglage CSS ADMIN LTE --}}
         <style>
             .dropdown-toggle::after {color: white}
             .select2-container { width: 100% !important; }
             .text-sm .brand-link .brand-image { margin-left: -0.2rem; }
+            .card-body { padding: 10px; }
         </style>
         @yield('customCss')
     </head>
@@ -81,13 +86,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <footer class="main-footer shadow-sm border-0 text-right">
-                Conditions générales d'utilisation &copy; FormaRecrut - Jobs <img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" class="img-size-64">
+                Conditions générales d'utilisation &copy; {{ config('app.name') }} <img src="{{ asset('img/logo.png') }}" alt="FormaRecrut" class="img-size-64">
             </footer>
         </div>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/vendor/adminlte.min.js') }}"></script>
         <script src="{{ asset('js/vendor/select2.min.js') }}"></script>
@@ -98,7 +104,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{-- <script src="{{ asset('js/vendor/chart.js/Chart.min.js') }}"></script> --}}
         <script src="{{ asset('js/vendor/toastr.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
 
         {{-- SWEET ALERT --}}
         {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
@@ -142,5 +149,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @stack('scripts')
         @yield('partialScript')
         @yield('scriptBottom')
+
+        <script>
+            flatpickr('input[type="date"]', { locale: 'fr'});
+        </script>
     </body>
 </html>

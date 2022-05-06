@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\HtmlString;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Entreprise extends Model
 {
@@ -14,7 +15,7 @@ class Entreprise extends Model
 
     protected $appends = ['logo_url'];
 
-    protected $with = ['trainings', 'pro_experiences', 'abonnement', 'owner'];
+    protected $with = ['abonnement', 'owner'];
 
 
     public function owner()
@@ -26,22 +27,6 @@ class Entreprise extends Model
     {
         return $this->belongsTo(Abonnement::class);
     }
-
-    public function getLogoUrlAttribute() 
-    {
-        return is_null($this->logo) ? asset('img/logo.png') : '';
-    }  
-
-    public function logoImg($options = [])
-    {
-        $options = array_merge([
-            'size' => '100px',
-            'alt' => '',
-            'class' => '',
-        ], $options);
-
-        return new HtmlString('<img class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
-    } 
 
     public function scopeActive($query)
     {
@@ -57,16 +42,45 @@ class Entreprise extends Model
     {
         if($this->statut) return new HtmlString('<span class="badge badge-success">Actif</span>');
         
-        return new HtmlString('<span class="badge badge-success">Inactif</span>');
+        return new HtmlString('<span class="badge badge-danger">Inactif</span>');
     }
 
-    public function trainings() 
+    public function getLogoUrlAttribute() 
     {
-        return $this->hasMany(Training::class);
+        if(is_null($this->logo)) {
+            return asset('img/logo.png');
+        }
+
+        return asset('storage/' . $this->logoDir() . '/' . $this->id . '.' . $this->logo);
+    }  
+
+    public function logoImg($options = [])
+    {
+        $options = array_merge([
+            'size' => '100px',
+            'alt' => '',
+            'title' => '',
+            'class' => '',
+        ], $options);
+
+        return new HtmlString('<img title="'.$options['title'].'" alt="'.$options['alt'].'" class="'.$options['class'].'" src="'. $this->logo_url .'" style="width: '. $options['size'] .'">');
+    } 
+
+    public function logoDir()
+    {
+        return 'recruteurs/logos';
     }
 
-    public function pro_experiences() 
+    public function setLogoAttribute($file) 
     {
-        return $this->hasMany(ProExperience::class);
+        if($file->isValid() && $file instanceof UploadedFile) {
+            
+            self::saved(function($instance) use ($file) {
+                $filename = sprintf("%s.%s", $instance->id, $file->getClientOriginalExtension());
+                $file->storePubliclyAs($instance->logoDir(), $filename);
+            });
+
+            $this->attributes['logo'] = $file->getClientOriginalExtension();
+        }
     }
 }

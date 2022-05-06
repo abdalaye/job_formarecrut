@@ -6,9 +6,8 @@ use App\Models\Entreprise;
 use App\Repositories\BaseRepository;
 
 /**
- * Class SubscriptionRepository
+ * Class EntrepriseRepository
  * @package App\Repositories
- * @version March 18, 2022, 6:02 pm UTC
 */
 
 class EntrepriseRepository extends BaseRepository
