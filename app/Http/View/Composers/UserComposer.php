@@ -39,6 +39,9 @@ class UserComposer {
                 // '_document_tranmis' => self::getDocumentsByStatutByCollaborateur(3,3), //approuve 3, transmis 3 (validation_statut)
             ]);
         }
+        return $view->with([
+            '_genres' => self::getGenresSelect(),
+        ]);
     }
 
     static function getGenresSelect() {
@@ -50,7 +53,7 @@ class UserComposer {
         );
     }
 
-    static function getMonthsSelect() 
+    static function getMonthsSelect()
     {
         return [
             [ 'name'  => 'Mois', 'value' => '' ],
@@ -69,14 +72,14 @@ class UserComposer {
         ];
     }
 
-    static function getYearsSelect() 
+    static function getYearsSelect()
     {
         $options   = [];
         $startYear = (int) now()->addYears('-65')->format('Y');
         $now       = (int) now()->format('Y');
 
         $options[] = ['name' => 'Année', 'value' => ''];
-        
+
         for($i = $now; $i >= $startYear; $i--) {
             $options[] = [
                 'name' => $i,
