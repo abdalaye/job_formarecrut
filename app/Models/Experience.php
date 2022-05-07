@@ -20,7 +20,6 @@ class Experience extends Model
         'country_id',
     ];
 
-
     public function entreprise() 
     {
         return $this->belongsTo(Entreprise::class);

@@ -117,19 +117,19 @@
     ])
 
     <div class="col-4">
-        <x-field type="select" name="niveau_etude_id" :options="['' => 'Niveau d\'étude'] + \App\Models\NiveauEtude::active()->pluck('name', 'id')->all()" :validation="true" required>
+        <x-field type="select" name="niveau_etude_id" :options="keyedSelect(\App\Models\NiveauEtude::active(), 'name', 'id')" :validation="true" required>
             Niveau d'étude
         </x-field>
     </div>
 
     <div class="col-4">
-        <x-field type="select" name="situation_id" :options="['' => 'Situation'] + \App\Models\Situation::active()->pluck('name', 'id')->all()" :validation="true" required>
+        <x-field type="select" name="situation_id" :options="keyedSelect(\App\Models\Situation::active(), 'name', 'id')" :validation="true" required>
             Situation
         </x-field>
     </div>
 
     <div class="col-4">
-        <x-field type="select" name="annee_experience" :options="['' => 'Année d\'expérience'] + flatSelect(1, 30)" :validation="true" required>
+        <x-field type="select" name="annee_experience" :options="rangeSelect(1, 30)" :validation="true" required>
             Année d'expérience
         </x-field>
     </div>

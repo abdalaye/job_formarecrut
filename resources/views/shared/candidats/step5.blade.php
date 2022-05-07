@@ -1,5 +1,16 @@
 @section('title', 'Candidat - Visualisation du CV')
 
+
+@push('css')
+<style>
+.competence-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+@endpush
+
 @section('actions')
 <a href="javascript:history.back();" class="btn btn-light rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
 @endsection
@@ -60,6 +71,19 @@
             <div class="d-flex align-items-center justify-content-between">
                 {{ $formation->description }}
             </div>
+        </div>
+        @endforeach
+        @endif
+
+
+
+        @if($candidat->competences()->count())
+        <h1>Compétences</h1>
+
+        @foreach($candidat->competences()->get() as $competence)
+        <div class="competence-item mb-3 col-6">
+            <h5 class="cv-preview-item__heading">{{ $competence->name }}</h5>
+            {!! $competence->niveau_competence->name  !!}
         </div>
         @endforeach
         @endif

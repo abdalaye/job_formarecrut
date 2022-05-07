@@ -50,14 +50,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 background: #f5f5f5;
                 border-radius: 50%;
             }
-            .dot.dot-success {
-                background: green;
-            }
-
-            .dot.dot-muted {
-                background: gray;
-            }
+            .dot.dot-success { background: green; }
+            .dot.dot-muted { background: gray; }
         </style>
+        @stack('css')
         @yield('customCss')
     </head>
     <body class="hold-transition sidebar-mini-md text-sm layout-navbar-fixed">

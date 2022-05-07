@@ -35,7 +35,6 @@
     <td>{{ $competence->name }}</td>
     <td>{{ $competence->niveau_competence->name ?? '---' }}</td>
     <td class="text-center">
-        <a href="#" data-toggle="modal" data-target="#showCompetence{{ $competence->id }}" class="btn btn-light btn-xs"><i class="fa fa-eye"></i></a>
         <a href="#" data-toggle="modal" data-target="#editCompetence{{ $competence->id }}" class="btn btn-light btn-xs"><i class="fa fa-edit"></i></a>
 
         <x-form-link 
