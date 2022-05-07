@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CandidatStep1Request;
 use App\Models\Candidat;
 use App\Repositories\CandidatRepository;
+use Illuminate\View\ComponentAttributeBag;
 
 class CandidatsController extends Controller
 {
@@ -54,8 +55,10 @@ class CandidatsController extends Controller
                 return back()->with('error', 'Veuillez ajouter au moins une formation.');
             } 
         } elseif($step == 4) {
-            if($candidat->experiences()->count() == 0) {
-                return back()->with('error', 'Veuillez ajouter au moins une expérience professionnelle.');
+            
+        } elseif($step == 5) {
+            if($candidat->competences()->count() == 0) {
+                return back()->with('error', 'Veuillez ajouter au moins une compétence.');
             }
         }
 
@@ -63,7 +66,7 @@ class CandidatsController extends Controller
     }
 
     public function step1(CandidatStep1Request $request, Candidat $candidat)
-    { 
+    {
         $data = $request->validated();
 
         if($this->candidatRepository->updateStep1($candidat, $data)) {

@@ -60,6 +60,11 @@ class Candidat extends Model
         return $this->hasMany(Experience::class);
     }
 
+    public function competences() 
+    {
+        return $this->hasMany(Competence::class);
+    }
+
     public function getSexeAttribute()
     {
         if($this->genre == 1) return "Homme";

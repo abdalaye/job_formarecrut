@@ -13,8 +13,13 @@
             <li class="step-item {{ $step == 3 ? 'active' : '' }}">
                 <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 3, 'hash' => sha1($candidat->id)]) }}">Expériences professionnelles</a>
             </li>
+
             <li class="step-item {{ $step == 4 ? 'active' : '' }}">
-                <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 4, 'hash' => sha1($candidat->id)]) }}">Visualisation CV</a>
+                <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 4, 'hash' => sha1($candidat->id)]) }}">Compétences</a>
+            </li>
+
+            <li class="step-item {{ $step == 5 ? 'active' : '' }}">
+                <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 5, 'hash' => sha1($candidat->id)]) }}">Visualisation CV</a>
             </li>
         </ul>
     </div>
@@ -34,6 +39,9 @@
                     @break
                 @case(4)
                     @include('shared.candidats.step4')
+                    @break
+                @case(5)
+                    @include('shared.candidats.step5')
                     @break
             @endswitch
         </div>

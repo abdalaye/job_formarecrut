@@ -1,67 +1,82 @@
-@section('title', 'Candidat - Visualisation du CV')
+@section('title', 'Candidats - Expériences professionnelles')
 
 @section('actions')
-<a href="javascript:history.back();" class="btn btn-light rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
+    <div>
+        <a href="javascript:history.back();" class="btn btn-light btn-sm rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
+        @include('admin.candidats.competences.create', ['competence' => new \App\Models\Competence])
+    </div>
 @endsection
 
-<div class="cv-preview">
-    <div class="cv-preview__header mb-4">
-        <div class="mb-2">
-            {{ $candidat->photoImg() }}
+
+
+<div class="col-12">
+    <div class="card shadow-none text-right">
+        <div class="card-body">
+            <button type="button" data-toggle="modal" data-target="#addCompetence" class="btn btn-primary btn-sm rounded small">Ajouter une compétence</button>
         </div>
-        <div class="w-100">
-            <h1 class="text-left">{{ $candidat->nomComplet }}</h1>
-            <ul class="d-flex justify-content-center flex-column align-items-start" style="list-style: none;margin: 0;padding: 0;">
-                <li><i class="fa fa-phone"></i> {{ $candidat->telephone }}</li>
-                <li><i class="fa fa-map-marker"></i> {{ $candidat->adresse }}</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="cv-preview-content col-9">
-        <div class="cv-preview-item">
-            <h2 class="cv-preview-item__heading">Profil</h2>
-            <p>{{ $candidat->info }}</p>
-        </div>
-
-
-        @if($candidat->experiences()->count())
-        <h1>Expériences professionnelles</h1>
-        @foreach($candidat->experiences()->get() as $experience)
-        <div class="cv-preview-item mb-3">
-            <h5 class="cv-preview-item__heading">{{ $experience->employeur }} - {{ $experience->city->name }}</h5>
-            <div class="d-flex align-items-center justify-content-between">
-                <div><strong>{{ $experience->poste }}</strong></div>
-                <div>
-                    {{ $experience->date_debut }} &dash; {{ $experience->date_fin }}
-                </div>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-                {{ $experience->description }}
-            </div>
-        </div>
-        @endforeach
-        <hr>
-        @endif
-
-
-        @if($candidat->formations()->count())
-        <h1>Formations</h1>
-
-        @foreach($candidat->formations()->get() as $formation)
-        <div class="cv-preview-item mb-3">
-            <h5 class="cv-preview-item__heading">{{ $formation->etablissement }} - {{ $formation->ville }}</h5>
-            <div class="d-flex align-items-center justify-content-between">
-                <strong>{{ $formation->formation }}</strong>
-                <div>
-                    {{ $formation->date_debut }} &dash; {{ $formation->date_fin }}
-                </div>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-                {{ $formation->description }}
-            </div>
-        </div>
-        @endforeach
-        @endif
     </div>
 </div>
+
+{{-- table header --}}
+@section('tableHeader')
+<tr>
+    <td>N°</td>
+    <td>Compétence</td>
+    <td>Niveau</td>
+    <td class="text-center">Actions</td>
+</tr>
+@endsection
+
+{{-- Table Body --}}
+@section('tableBody')
+@forelse($candidat->competences()->orderBy('name')->get() as $competence)
+<tr>
+    <td>#{{ $loop->index+1 }}</td>
+    <td>{{ $competence->name }}</td>
+    <td>{{ $competence->niveau_competence->name ?? '---' }}</td>
+    <td class="text-center">
+        <a href="#" data-toggle="modal" data-target="#showCompetence{{ $competence->id }}" class="btn btn-light btn-xs"><i class="fa fa-eye"></i></a>
+        <a href="#" data-toggle="modal" data-target="#editCompetence{{ $competence->id }}" class="btn btn-light btn-xs"><i class="fa fa-edit"></i></a>
+
+        <x-form-link 
+            onclick="return confirm('Êtes vous sûr.e ?')" 
+            method="DELETE" 
+            url="{{ route('admin.candidats.competences.destroy', ['candidat' => $candidat->id, 'competence' => $competence->id]) }}" 
+            class="btn btn-light text-danger btn-xs"
+        >
+            <i class="fa fa-trash"></i>
+        </x-form-link>
+
+        @include('admin.candidats.competences.edit')
+
+        @include('admin.candidats.competences.show')
+
+    </td>
+</tr>
+@empty 
+<tr>
+    <td class="text-center" colspan="8">Aucune expérience professionnelle n'a été ajoutée pour le moment...</td>
+</tr>
+@endforelse
+@endsection
+
+
+@if($candidat->competences()->count())
+@section('cardFooter')
+<div class="d-flex justify-content-end">
+    <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => $step+1, 'hash' => sha1($candidat->id)]) }}" class="btn btn-outline-secondary ml-2">Suivant <i class="fas fa-arrow-circle-right ml-2"></i></a>
+</div>
+@stop
+@endif
+
+{{-- Datatable extension --}}
+@include('layouts.sub_layouts.datatable')
+
+
+@section('scriptBottom')
+    @include('partials.utilities.datatableElement', ['id' => 'datatable'])
+    <script>
+        $('.table').removeClass('table-hover');
+        $('.table').attr('id', '');
+    </script>
+@endsection

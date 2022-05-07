@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CandidatSeeder::class,
             AbonnementSeeder::class,
             EntrepriseSeeder::class,
+            NiveauCompetenceSeeder::class,
         ]);
     }
 }

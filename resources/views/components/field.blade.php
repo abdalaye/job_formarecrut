@@ -1,20 +1,15 @@
 <div class="form-group">
-    @php 
-    if($validation) {
-        $errorField = errorField($errors, $name);
-    } else {
-        $errorField = '';
-    }
-    @endphp 
+    @php $errorField = $validation ? errorField($errors, $name) : ''; @endphp 
+
     
     {!! Form::label($name, ($slot ?? \Illuminate\Support\Str::headline($name)), ['class' => 'control-label']) !!}
     
     @if($type == 'select')
-    {!! Form::select($name, $options, null, ['class' => 'form-control '.$errorField]) !!}
+    {!! Form::select($name, $options, null, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
     @elseif($type == 'textarea')
-    {!! Form::textarea($name, null, ['class' => 'form-control '.$errorField, 'rows' => 5]) !!}
+    {!! Form::textarea($name, null, $attributes->merge(['class' => 'form-control '.$errorField, 'rows' => 5])->getAttributes()) !!}
     @else 
-    {!! Form::input($type, $name, null, ['class' => 'form-control '.$errorField]) !!}
+    {!! Form::input($type, $name, null, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
     @endif
 
     @if($validation)

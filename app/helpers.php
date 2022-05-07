@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use Illuminate\Database\Eloquent\Model;
 
 if(!function_exists('getMonths')) {
     function getMonths() {
@@ -44,5 +46,24 @@ if(! function_exists('flatSelect')) {
         return array_reduce(range($min, $max), function($carry, $item) {
             return $carry + [$item => $item];
         }, []);
+    }
+}
+
+if(! function_exists('keyedSelect')) {
+    function keyedSelect($model, $label = 'name', $value = 'id', $options = ['position' => false]) {
+
+        $model = app($model);
+
+        if(! $model instanceof Model) {
+            return ['' => "$model is not a model"];
+        }
+
+        if($options['position']) {
+            $model = $model->orderBy('position');
+        }
+
+        $model = $model->pluck($label, $value);
+
+        return $model->all();
     }
 }
