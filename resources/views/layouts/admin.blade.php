@@ -33,8 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/vendor/jquery.auto-complete.css') }}" rel="stylesheet">
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <link rel="stylesheet" href="{{ asset('css/component-chosen.min.css') }}">
 
         {{-- Reglage CSS ADMIN LTE --}}
         <style>
@@ -117,6 +118,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+        <script>
+            $('select[multiple]').chosen();
+        </script>
 
         {{-- SWEET ALERT --}}
         {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}

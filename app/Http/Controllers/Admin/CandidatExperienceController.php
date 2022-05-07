@@ -13,6 +13,11 @@ class CandidatExperienceController extends Controller
     {
         $experience      = $candidat->experiences()->create($request->validated());
 
+
+        if($secteur_ids = $request->get('secteur_ids')) {
+            $experience->secteurs()->sync($secteur_ids);
+        }
+
         if(! $experience) return back()->with('error', "Erreur lors de l'ajout de l'expérience professionnelle.");
 
         return back()->with('success', 'Expérience professionnelle ajoutée avec succès.');
@@ -23,6 +28,10 @@ class CandidatExperienceController extends Controller
         $experience = $candidat->experiences()->where('id', $experience->id)->firstOrFail();
 
         $experience->update($request->validated());
+
+        if($secteur_ids = $request->get('secteur_ids')) {
+            $experience->secteurs()->sync($secteur_ids);
+        }
 
         return back()->with('success', 'Expérience professionnelle modifiée avec succès.');
     }

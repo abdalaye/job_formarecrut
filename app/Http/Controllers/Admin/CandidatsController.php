@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CandidatStep1Request;
 use App\Models\Candidat;
 use App\Repositories\CandidatRepository;
-use Illuminate\View\ComponentAttributeBag;
 
 class CandidatsController extends Controller
 {
