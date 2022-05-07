@@ -39,6 +39,9 @@ class UserComposer {
                 // '_document_tranmis' => self::getDocumentsByStatutByCollaborateur(3,3), //approuve 3, transmis 3 (validation_statut)
             ]);
         }
+        return $view->with([
+            '_genres' => self::getGenresSelect(),
+        ]);
     }
 
     static function getGenresSelect() {
@@ -49,4 +52,42 @@ class UserComposer {
             ])
         );
     }
+
+    static function getMonthsSelect()
+    {
+        return [
+            [ 'name'  => 'Mois', 'value' => '' ],
+            [ 'name'  => 'Janvier', 'value' => '01' ],
+            [ 'name'  => 'Février', 'value' => '02' ],
+            [ 'name'  => 'Mars', 'value' => '03' ],
+            [ 'name'  => 'Avril', 'value' => '04' ],
+            [ 'name'  => 'Mai', 'value' => '05' ],
+            [ 'name'  => 'Juin', 'value' => '06' ],
+            [ 'name'  => 'Juillet', 'value' => '07' ],
+            [ 'name'  => 'Août', 'value' => '08' ],
+            [ 'name'  => 'Septembre', 'value' => '09' ],
+            [ 'name'  => 'Octobre', 'value' => '10' ],
+            [ 'name'  => 'Novembre', 'value' => '11' ],
+            [ 'name'  => 'Décembre', 'value' => '12' ],
+        ];
+    }
+
+    static function getYearsSelect()
+    {
+        $options   = [];
+        $startYear = (int) now()->addYears('-65')->format('Y');
+        $now       = (int) now()->format('Y');
+
+        $options[] = ['name' => 'Année', 'value' => ''];
+
+        for($i = $now; $i >= $startYear; $i--) {
+            $options[] = [
+                'name' => $i,
+                'value' => $i
+            ];
+        }
+
+        return $options;
+    }
+
 }

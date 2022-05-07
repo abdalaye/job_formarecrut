@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get("/inscription", [App\Http\Controllers\UsersController::class, 'inscription'])->name('inscription');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tableau-de-bord', [App\Http\Controllers\HomeController::class, 'index']);
 
@@ -37,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix("parametres")->group(function() {
             Route::resource("countries", App\Http\Controllers\Admin\CountriesController::class);
             Route::resource("cities", App\Http\Controllers\Admin\CitiesController::class);
+            Route::resource("faqs", App\Http\Controllers\Admin\FaqsController::class);
             Route::resource("secteurs", App\Http\Controllers\Admin\SecteursController::class);
             Route::resource("niveau_langues", App\Http\Controllers\Admin\NiveauLanguesController::class);
             Route::resource("niveau_etudes", App\Http\Controllers\Admin\NiveauEtudesController::class);

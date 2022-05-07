@@ -44,6 +44,34 @@ $login_secondary: #E36835;
     .text-secondary {
         color: $login_primary !important;
     }
+
+    .nav-pills {
+       .nav-link {
+           font-size: small;
+           color: $login_secondary;
+           background-color: darken($light, 3);
+           margin-right: 8px;
+           border-radius: 0 50px 50px 0;
+           &.active {
+               background-color: $login_secondary;
+               color: white;
+           }
+       }
+    }
+
+    .tab-content {
+        .form-group{
+            margin-bottom: .5rem;
+
+            .label {
+                font-weight: bold;
+            }
+            .form-control {
+                border: 1px solid rgba($color: $login_primary, $alpha: .2);
+                background-color: white;
+            }
+        }
+    }
 }
 
 .btn__login {
