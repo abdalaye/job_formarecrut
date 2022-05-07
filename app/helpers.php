@@ -38,3 +38,11 @@ if(! function_exists('errorField')) {
         return $errors->has($field) ? $className : '';
     }
 }
+
+if(! function_exists('flatSelect')) {
+    function flatSelect($min, $max) {
+        return array_reduce(range($min, $max), function($carry, $item) {
+            return $carry + [$item => $item];
+        }, []);
+    }
+}
