@@ -32,6 +32,7 @@ class CandidatStep1Request extends FormRequest
             'genre'          => 'required',
             'date_naissance' => 'required',
             'lieu_naissance' => 'required',
+            'annee_experience' => 'required|int',
             'adresse'        => 'required',
             'country_id'     => 'required',
             'city_id'        => 'required',
