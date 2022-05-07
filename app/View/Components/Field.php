@@ -16,6 +16,8 @@ class Field extends Component
 
     public $validation;
 
+    public $selected;
+    
     public $options;
 
     /**
@@ -23,13 +25,14 @@ class Field extends Component
      *
      * @return void
      */
-    public function __construct($type = 'text', $name = 'name', $label = '', $validation = false, $options = [])
+    public function __construct($type = 'text', $name = 'name', $label = '', $validation = false, $selected = false, $options = [])
     {
         $this->type       = $type;
         $this->name       = $name;
         $this->label      = $label;
         $this->validation = $validation;
         $this->options    = $options;
+        $this->selected   = $selected;
     }
 
     /**

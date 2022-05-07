@@ -42,6 +42,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             .select2-container { width: 100% !important; }
             .text-sm .brand-link .brand-image { margin-left: -0.2rem; }
             .card-body { padding: 10px; }
+
+            .dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #f5f5f5;
+                border-radius: 50%;
+            }
+            .dot.dot-success {
+                background: green;
+            }
+
+            .dot.dot-muted {
+                background: gray;
+            }
         </style>
         @yield('customCss')
     </head>

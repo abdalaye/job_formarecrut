@@ -63,7 +63,7 @@ class CandidatsController extends Controller
     }
 
     public function step1(CandidatStep1Request $request, Candidat $candidat)
-    {
+    { 
         $data = $request->validated();
 
         if($this->candidatRepository->updateStep1($candidat, $data)) {

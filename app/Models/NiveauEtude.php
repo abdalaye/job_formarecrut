@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Activable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class NiveauEtude extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    use Activable;
 
-    public function getStatutBadgeAttribute()
-    {
-        if($this->statut) return '<span class="badge badge-success">Actif</span>';
-        return '<span class="badge badge-danger">Inactif</span>';
-    }
+    protected $guarded = ['id'];
+    
 }

@@ -5,10 +5,7 @@
         Retour</a>
 @endsection
 
-<form action="{{ route('admin.candidats.step1', $candidat) }}" enctype="multipart/form-data" method="post"
-    class="row">
-    @csrf
-    @method("PATCH")
+{!! Form::model($candidat, ['method' => 'patch', 'route' => ['admin.candidats.step1', $candidat], 'files' => true, 'class' => 'row']) !!}
     <div class="col-12">
         <div class="row">
             <div class="col-6">
@@ -118,7 +115,20 @@
         'name' => 'city_id',
         'value' => old('city_id') ?? $candidat->city_id,
     ])
+    
 
+
+    <div class="col-6">
+        <x-field type="select" name="niveau_etude_id" :options="['' => 'Niveau d\'étude'] + \App\Models\NiveauEtude::active()->pluck('name', 'id')->all()" :validation="true" required>
+            Niveau d'étude
+        </x-field>
+    </div>
+
+    <div class="col-6">
+        <x-field type="select" name="situation_id" :options="['' => 'Situation'] + \App\Models\Situation::active()->pluck('name', 'id')->all()" :validation="true" required>
+            Situation
+        </x-field>
+    </div>
 
     <div class="form-group col-12">
         <label for="info" class="control-label">Infos</label>
@@ -134,7 +144,7 @@
         <button type="submit" name="action" value="next" class="btn btn-outline-secondary ml-2">Suivant <i class="fas fa-arrow-circle-right ml-2"></i></button>
     </div>
 
-</form>
+{!! Form::close() !!}
 
 @push('scripts')
     <script>
