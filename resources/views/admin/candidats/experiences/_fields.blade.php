@@ -17,10 +17,18 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            @php 
-            $selectedOptions = $experience->secteurs()->pluck('id')->all();
-            @endphp
-            <x-select-field name="secteur_ids[]" id="secteur_ids" :options="keyedSelect(\App\Models\Secteur::active())" :selected="$selectedOptions" :validation="true" required multiple>Secteurs d'activité</x-field>
+            <x-select-field 
+                name="secteur_ids[]" 
+                id="secteur_ids" 
+                :options="keyedSelect(\App\Models\Secteur::active())" 
+                :selected="$experience->secteurs()->pluck('id')->all()" 
+                :validation="true" 
+                required 
+                class="select2"
+                multiple 
+            >
+                Secteurs d'activité
+            </x-field>
         </div>
     </div>
 </div>

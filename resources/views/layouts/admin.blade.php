@@ -15,7 +15,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16" />
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
 
         <!-- Google Font: Source Sans Pro -->
@@ -24,7 +23,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{ asset('css/vendor/fontawesome-free/css/all.min.css') }}">
         <!-- Theme style -->
         <link href="{{ asset('css/adminlte.css') }}" rel="stylesheet">
-
         {{-- FANCYBOX --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous" />
 
@@ -34,8 +32,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
-        <link rel="stylesheet" href="{{ asset('css/component-chosen.min.css') }}">
 
         {{-- Reglage CSS ADMIN LTE --}}
         <style>
@@ -53,6 +49,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
             .dot.dot-success { background: green; }
             .dot.dot-muted { background: gray; }
+            .chosen-search-input {
+                font-family: var(--font-base)!important;
+            }
         </style>
         @stack('css')
         @yield('customCss')
@@ -118,11 +117,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-
-        <script>
-            $('select[multiple]').chosen();
-        </script>
 
         {{-- SWEET ALERT --}}
         {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
@@ -168,6 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @yield('scriptBottom')
 
         <script>
+            $('.select2').select2();
             flatpickr('input[type="date"]', { locale: 'fr'});
         </script>
     </body>

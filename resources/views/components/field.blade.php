@@ -7,7 +7,7 @@
 
         @if($attributes->has('multiple'))
 
-        {!! Form::select($name, ['' => ''] + $options, $selected, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
+        {!! Form::select($name, $options, $selected, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
 
         @else
 
