@@ -21,6 +21,8 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get("/inscription", [App\Http\Controllers\UsersController::class, 'inscription'])->name('inscription');
+Route::post("/inscription-candidat", [App\Http\Controllers\UsersController::class, 'inscriptionCandidat'])->name('inscription.candidat');
+Route::post("/inscription-recruteur", [App\Http\Controllers\UsersController::class, 'inscriptionRecruteur'])->name('inscription.recruteur');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tableau-de-bord', [App\Http\Controllers\HomeController::class, 'index']);

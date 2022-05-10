@@ -43423,7 +43423,7 @@ a.text-muted:hover {
 
 #main {
   overflow: auto;
-  height: calc(100vh - (155px));
+  height: calc(100vh - (170px));
 }
 
 .profile-wrapper .user {

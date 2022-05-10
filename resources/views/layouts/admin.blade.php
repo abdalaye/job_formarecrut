@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content-wrapper">
 
             <!-- Content Header (Page header) -->
-            <div class="content-header bg-white px-3 py-3 d-flex justify-content-between align-items-center shadow-sm">
+            <div class="content-header bg-white px-3 py-2 small d-flex justify-content-between align-items-center shadow-sm">
                 <h2 class="h6 m-0 text-black-50">@yield('title')</h2>
                 <!-- Actions-->
                 @yield('actions')

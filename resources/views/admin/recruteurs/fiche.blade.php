@@ -29,11 +29,11 @@
 
                                             <x-profile-item label="Nombre d'entreprises" :value="$recruteur->n_employers" />
 
-                                            <x-profile-item label="Propriétaire" :value="$recruteur->owner->fullName" />
+                                            <x-profile-item label="Propriétaire" :value="optional($recruteur->owner)->fullName" />
 
-                                            <x-profile-item label="Abonnement" :value="$recruteur->abonnement->name" />
+                                            <x-profile-item label="Abonnement" :value="optional($recruteur->abonnement)->name" />
 
-                                            <x-profile-item label="Abonnement" :value="$recruteur->abonnement->price_texte" />
+                                            <x-profile-item label="Abonnement" :value="optional($recruteur->abonnement)->price_texte" />
 
                                         </div>
                                     </div>

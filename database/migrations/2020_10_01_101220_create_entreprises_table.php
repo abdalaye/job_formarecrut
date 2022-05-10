@@ -23,7 +23,7 @@ class CreateEntreprisesTable extends Migration
             $table->string('ninea')->nullable();
             $table->string('rc')->nullable();
             $table->string('logo')->nullable();
-            $table->integer('statut');
+            $table->integer('statut')->default(0);
             $table->foreignId('user_id');
             $table->foreignId('abonnement_id')->nullable();
             $table->timestamps();
