@@ -1,23 +1,37 @@
 <div class="form-group">
-    @php 
-    if($validation) {
-        $errorField = errorField($errors, $name);
-    } else {
-        $errorField = '';
-    }
-    @endphp 
+    @php $errorField = $validation ? errorField($errors, $name) : ''; @endphp 
     
-    {!! Form::label($name, ($slot ?? \Illuminate\Support\Str::headline($name)), ['class' => 'control-label']) !!}
+    {!! Form::label($name, ($slot ?? \Illuminate\Support\Str::headline($name)), ['class' => 'control-label' . $attributes->has('required') ? 'required' : '']) !!}
     
     @if($type == 'select')
-    {!! Form::select($name, $options, null, ['class' => 'form-control '.$errorField]) !!}
+
+        @if($attributes->has('multiple'))
+
+        {!! Form::select($name, $options, $selected, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
+
+        @else
+
+        {!! Form::select($name, ['' => 'Veuillez sélectionner'] + $options, null, $attributes->merge(['id' => $name,'class' => 'form-control '.$errorField])->getAttributes()) !!}
+        
+        @endif 
+
     @elseif($type == 'textarea')
-    {!! Form::textarea($name, null, ['class' => 'form-control '.$errorField, 'rows' => 5]) !!}
+
+
+        {!! Form::textarea($name, null, $attributes->merge(['class' => 'form-control '.$errorField, 'rows' => 5])->getAttributes()) !!}
+
+
     @else 
-    {!! Form::input($type, $name, null, ['class' => 'form-control '.$errorField]) !!}
+
+
+        {!! Form::input($type, $name, null, $attributes->merge(['class' => 'form-control '.$errorField])->getAttributes()) !!}
+
+
     @endif
 
     @if($validation)
-    @error($name) <span class="invalid-feedback">{{ $message }}</span> @enderror
+
+        @error($name) <span class="invalid-feedback">{{ $message }}</span> @enderror
+
     @endif
 </div>

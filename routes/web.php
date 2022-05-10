@@ -88,6 +88,21 @@ Route::middleware(['auth'])->group(function () {
         ])->name('candidats.experiences.destroy');
 
 
+
+        Route::post('candidats/{candidat}/competences/create', [
+            \App\Http\Controllers\Admin\CandidatCompetenceController::class, 'store'
+        ])->name('candidats.competences.store');
+
+
+        Route::put('candidats/{candidat}/competence/{competence}/update', [
+            \App\Http\Controllers\Admin\CandidatCompetenceController::class, 'update'
+        ])->name('candidats.competences.update');
+
+        Route::delete('candidats/{candidat}/competence/{competence}/destroy', [
+            \App\Http\Controllers\Admin\CandidatCompetenceController::class, 'destroy'
+        ])->name('candidats.competences.destroy');
+
+
         Route::get("recruteurs/complets", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('recruteurs.actifs');
         Route::get("recruteurs/incomplets", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('recruteurs.inactifs');
         Route::get("recruteurs/{entreprise}/profil", [App\Http\Controllers\Admin\RecruteursController::class, 'show'])->name('recruteurs.show');

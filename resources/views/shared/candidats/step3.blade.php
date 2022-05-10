@@ -3,11 +3,19 @@
 @section('actions')
     <div>
         <a href="javascript:history.back();" class="btn btn-light btn-sm rounded"><i class="fas fa-arrow-left mr-2"></i> Retour</a>
-        <button type="button" data-toggle="modal" data-target="#addExperience" class="btn btn-primary btn-sm rounded small">Ajouter une nouvelle expérience</button>
         @include('admin.candidats.experiences.create', ['experience' => new \App\Models\Experience])
     </div>
 @endsection
 
+
+
+<div class="col-12">
+    <div class="card shadow-none text-right">
+        <div class="card-body">
+            <button type="button" data-toggle="modal" data-target="#addExperience" class="btn btn-primary btn-sm rounded small">Ajouter une nouvelle expérience</button>
+        </div>
+    </div>
+</div>
 
 {{-- table header --}}
 @section('tableHeader')

@@ -15,4 +15,9 @@ class NiveauCompetence extends Model
         if($this->statut) return '<span class="badge badge-success">Actif</span>';
         return '<span class="badge badge-danger">Inactif</span>';
     }
+
+    public function candidat() 
+    {
+        return $this->belongsTo(Candidat::class);
+    }
 }

@@ -15,7 +15,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16" />
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
 
         <!-- Google Font: Source Sans Pro -->
@@ -24,7 +23,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{ asset('css/vendor/fontawesome-free/css/all.min.css') }}">
         <!-- Theme style -->
         <link href="{{ asset('css/adminlte.css') }}" rel="stylesheet">
-
         {{-- FANCYBOX --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous" />
 
@@ -33,7 +31,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset('css/vendor/jquery.auto-complete.css') }}" rel="stylesheet">
         <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/animate.min.css') }}" rel="stylesheet">
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         {{-- Reglage CSS ADMIN LTE --}}
@@ -42,7 +39,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             .select2-container { width: 100% !important; }
             .text-sm .brand-link .brand-image { margin-left: -0.2rem; }
             .card-body { padding: 10px; }
+
+            .dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #f5f5f5;
+                border-radius: 50%;
+            }
+            .dot.dot-success { background: green; }
+            .dot.dot-muted { background: gray; }
+            .chosen-search-input {
+                font-family: var(--font-base)!important;
+            }
         </style>
+        @stack('css')
         @yield('customCss')
     </head>
     <body class="hold-transition sidebar-mini-md text-sm layout-navbar-fixed">
@@ -151,6 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @yield('scriptBottom')
 
         <script>
+            $('.select2').select2();
             flatpickr('input[type="date"]', { locale: 'fr'});
         </script>
     </body>

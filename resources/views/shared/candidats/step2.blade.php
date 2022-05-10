@@ -1,7 +1,6 @@
 @section('title', 'Candidats - Formations')
 
 @section('actions')
-    <button type="button" data-toggle="modal" data-target="#addFormation" class="btn btn-primary btn-sm rounded small">Ajouter une nouvelle formation</button>
     @include('admin.candidats.formations.create', ['formation' => new \App\Models\Formation])
 @endsection
 
@@ -20,6 +19,8 @@
     <td class="text-center">Actions</td>
 </tr>
 @endsection
+
+
 
 {{-- Table Body --}}
 @section('tableBody')
@@ -63,9 +64,19 @@
     @section('cardFooter')
         <div class="d-flex justify-content-end">
             <a href="{{ route('admin.candidats.edit', ['candidat' => $candidat->id, 'step' => 3, 'hash' => sha1($candidat->id)]) }}" class="btn btn-outline-secondary ml-2">Suivant <i class="fas fa-arrow-circle-right ml-2"></i></a>
+
         </div>
     @stop
 @endif
+
+
+<div class="col-12">
+    <div class="card shadow-none text-right">
+        <div class="card-body">
+            <button type="button" data-toggle="modal" data-target="#addFormation" class="btn btn-primary btn-sm rounded small">Ajouter une nouvelle formation</button>
+        </div>
+    </div>
+</div>
 
 {{-- Datatable extension --}}
 @include('layouts.sub_layouts.datatable')

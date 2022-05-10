@@ -16,7 +16,7 @@ class CollaborateurSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)
-                        ->has(\App\Models\Candidat::factory(1),'candidat')
+                        ->has(\App\Models\Candidat::factory(1), 'candidat')
                         ->create();
 
 

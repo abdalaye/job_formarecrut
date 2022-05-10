@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
     use HasFactory;
+    use FormAccessible;
 
     protected $fillable = [
         'poste',
@@ -19,7 +21,6 @@ class Experience extends Model
         'city_id',
         'country_id',
     ];
-
 
     public function entreprise() 
     {
@@ -39,5 +40,10 @@ class Experience extends Model
     public function city() 
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function secteurs() 
+    {
+        return $this->belongsToMany(Secteur::class);
     }
 }

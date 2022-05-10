@@ -13,16 +13,37 @@
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <x-select-field 
+                name="secteur_ids[]" 
+                id="secteur_ids" 
+                :options="keyedSelect(\App\Models\Secteur::active())" 
+                :selected="$experience->secteurs()->pluck('id')->all()" 
+                :validation="true" 
+                required 
+                class="select2"
+                multiple 
+            >
+                Secteurs d'activité
+            </x-field>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="col-6">
         <div class="form-group">
-            <x-field type="select" name="country_id" :options="['' => 'Pays'] + \App\Models\Country::active()->pluck('name', 'id')->all()" :validation="true" required>Pays</x-field>
+            <x-select-field name="country_id" :options="keyedSelect(\App\Models\Country::active())" :validation="true" required>Pays</x-field>
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
-            <x-field type="select" name="city_id" :options="['' => 'Ville'] + \App\Models\City::active()->pluck('name', 'id')->all()" :validation="true" required>Ville</x-field>
+            <x-select-field name="city_id" :options="keyedSelect(\App\Models\City::active())" :validation="true" required>Ville</x-field>
         </div>
     </div>
 </div>

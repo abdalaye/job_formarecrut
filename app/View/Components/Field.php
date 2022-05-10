@@ -16,20 +16,24 @@ class Field extends Component
 
     public $validation;
 
+    public $selected;
+    
     public $options;
+    
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type = 'text', $name = 'name', $label = '', $validation = false, $options = [])
+    public function __construct($type = 'text', $name = 'name', $label = '', $validation = false, $selected = false, $options = ['selected' => false])
     {
         $this->type       = $type;
         $this->name       = $name;
         $this->label      = $label;
         $this->validation = $validation;
         $this->options    = $options;
+        $this->selected   = $selected;
     }
 
     /**

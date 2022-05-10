@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Activable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Candidat extends Model
 {
     use HasFactory;
-    
+    use Activable;
+
     protected $guarded = ['id'];
 
     protected $with = [
@@ -58,6 +60,11 @@ class Candidat extends Model
         return $this->hasMany(Experience::class);
     }
 
+    public function competences() 
+    {
+        return $this->hasMany(Competence::class);
+    }
+
     public function getSexeAttribute()
     {
         if($this->genre == 1) return "Homme";
@@ -68,12 +75,6 @@ class Candidat extends Model
     public function getNomCompletAttribute() 
     {
         return sprintf("%s %s", $this->prenom, strtoupper($this->nom));
-    }
-
-    public function getStatutBadgeAttribute()
-    {
-        if($this->statut) return '<span class="badge badge-success">Complet</span>';
-        return '<span class="badge badge-danger">Incomplet</span>';
     }
 
     public function getPhotoUrlAttribute() 

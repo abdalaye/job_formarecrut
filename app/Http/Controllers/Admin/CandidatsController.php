@@ -54,8 +54,10 @@ class CandidatsController extends Controller
                 return back()->with('error', 'Veuillez ajouter au moins une formation.');
             } 
         } elseif($step == 4) {
-            if($candidat->experiences()->count() == 0) {
-                return back()->with('error', 'Veuillez ajouter au moins une expérience professionnelle.');
+            
+        } elseif($step == 5) {
+            if($candidat->competences()->count() == 0) {
+                return back()->with('error', 'Veuillez ajouter au moins une compétence.');
             }
         }
 

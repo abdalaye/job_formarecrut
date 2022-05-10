@@ -31,6 +31,7 @@ class CandidatExperienceFormRequest extends FormRequest
             'city_id'       => 'required|exists:cities,id',
             'country_id'    => 'required|exists:countries,id',
             'description'   => 'required',
+            'secteur_ids'   => 'required',
         ];
     }
 }
