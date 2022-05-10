@@ -21,10 +21,9 @@
 
     {{-- Table Body --}}
     @section('tableBody')
-    @php $i = 1 @endphp
         @foreach ($candidats as $candidat)
         <tr>
-            <td>{{ $i }}</td>
+            <td>{{ ($loop->index + 1) }}</td>
             <td>{{ $candidat->prenom }}</td>
             <td>{{ $candidat->nom }}</td>
             <td>{!! $candidat->statut_badge !!}</td>
@@ -36,7 +35,6 @@
                 </a>
             </td>
         </tr>
-        @php $i++ @endphp
         @endforeach
     @endsection
 

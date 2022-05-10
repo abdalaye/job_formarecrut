@@ -6,6 +6,7 @@ use App\Http\Requests\CandidatInscription;
 use App\Http\Requests\EntrepriseInscription;
 use App\Models\Candidat;
 use App\Models\Entreprise;
+use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -58,7 +59,7 @@ class UsersController extends Controller
         $entrprise_data = $request->validated();
 
         //Generate user access
-        $user = $this->generateAccess(2);
+        $user = $this->generateAccess(Profil::RECRUTEUR);
 
         if($user) {
             $entreprise = new Entreprise(array_merge($entrprise_data,
@@ -80,7 +81,7 @@ class UsersController extends Controller
         );
     }
 
-    private function generateAccess($profil_id = 1) //1 entrp$entreprise, 2 => entreprise
+    private function generateAccess($profil_id = Profil::CANDIDAT) //1 entrp$entreprise, 2 => entreprise
     {
         $data = $this->validateUserData();
 

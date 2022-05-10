@@ -16,6 +16,7 @@ class CreateNiveauCompetencesTable extends Migration
         Schema::create('niveau_competences', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('rang')->unsigned()->default(0);
             $table->boolean('statut')->default(1);
             $table->timestamps();
         });

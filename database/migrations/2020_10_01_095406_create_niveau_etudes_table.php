@@ -16,6 +16,7 @@ class CreateNiveauEtudesTable extends Migration
         Schema::create('niveau_etudes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('rang')->unsigned()->default(0);
             $table->boolean('statut')->default(1);
             $table->timestamps();
         });

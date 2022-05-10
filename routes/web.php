@@ -49,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
             Route::resource("type_contrats", App\Http\Controllers\Admin\TypeContratsController::class);
             Route::resource("abonnements", App\Http\Controllers\Admin\AbonnementsController::class);
             Route::resource("situations", App\Http\Controllers\Admin\SituationsController::class);
+
+            Route::post("ranger-elements/{entity}", [App\Http\Controllers\Admin\NiveauEtudesController::class, 'range'])->name("range.elements");
+
         });
         Route::resource("users", App\Http\Controllers\Admin\UsersController::class);
         Route::get("users-incomplets", [App\Http\Controllers\Admin\UsersController::class, 'inactifs'])->name("users.inactifs");

@@ -17,6 +17,7 @@ class CreateNiveauLanguesTable extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('statut');
+            $table->integer('rang')->unsigned()->default(0);
             $table->timestamps();
         });
     }

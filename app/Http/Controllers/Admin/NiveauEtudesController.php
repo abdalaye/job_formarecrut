@@ -85,4 +85,28 @@ class NiveauEtudesController extends Controller
         return $niveauEtude->delete() ? back()->withSuccess("Votre requête a été effectuée avec succès !") :
         back()->withError("Une erreur est survenue au moment de la finalisation de votre requête !");
     }
+
+    public function range()
+    {
+        $model = request()->entity;
+
+        try {
+            // $model = "\\App\Models\\$entity";
+            $items = $model::all();
+            $tmp_champs = request("champs") ?? [];
+
+            if(count($tmp_champs) && count($items)) {
+                foreach ($tmp_champs as $id_entity => $index) {
+                    $model::find($id_entity)->update([
+                        'rang' => $index + 1
+                    ]);
+                }
+            }
+
+            return back()->withSuccess("Les éléments ont été rangés avec succès !");
+
+        } catch (\Throwable $th) {
+            return back()->withError($th->getMessage());
+        }
+    }
 }

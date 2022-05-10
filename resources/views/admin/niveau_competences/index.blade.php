@@ -13,6 +13,12 @@
                     </div>
                 </form>
             </div>
+
+            {{-- Range items --}}
+            @include('partials.element.form_range', [
+                'donnees' => $niveau_competences,
+                'entityModel' => get_class($niveauCompetence)
+            ])
         </div>
     </div>
 

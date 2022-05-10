@@ -9,6 +9,7 @@ class UserComposer {
 
     //required method
     public function compose(View $view) {
+        $sharedData = [];
         if(Auth::check()) {
             $extensions = config("app.extensions");
             $user = Auth::user();
@@ -19,7 +20,7 @@ class UserComposer {
             $_cities = \App\Models\City::active()->orderBy('name')->get()->all();
 
 
-            $view->with([
+            $sharedData = [
                 '_user' => $user,
                 '_sidebar' => $sidebar,
                 '_extensions' => $extensions,
@@ -37,11 +38,18 @@ class UserComposer {
                 // '_document_traites' => self::getDocumentsByStatutByCollaborateur(2), // statut en traitement 2
                 // '_type_documents' => $type_documents,
                 // '_document_tranmis' => self::getDocumentsByStatutByCollaborateur(3,3), //approuve 3, transmis 3 (validation_statut)
-            ]);
+            ];
         }
-        return $view->with([
+
+
+        $_faqs = \App\Models\Faq::active()->latest()->limit(10)->get()->all();
+
+        $sharedData = array_merge($sharedData,[
             '_genres' => self::getGenresSelect(),
+            '_faqs' => $_faqs,
         ]);
+
+        return $view->with($sharedData);
     }
 
     static function getGenresSelect() {

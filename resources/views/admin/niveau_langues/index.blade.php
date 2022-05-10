@@ -12,6 +12,12 @@
                         <button type="submit" class="btn btn-primary btn-sm btn-block">Ajouter</button>
                     </div>
                 </form>
+
+                {{-- Range items --}}
+                @include('partials.element.form_range', [
+                    'donnees' => $niveau_langues,
+                    'entityModel' => get_class($niveauLangue)
+                ])
             </div>
         </div>
     </div>
