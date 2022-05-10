@@ -58,7 +58,7 @@
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li><a class="nav-link scrollto" href="#faq">FAQs</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="getstarted scrollto" href="#">Inscrivez-vous</a></li>
+                    <li><a class="getstarted" target="_blank" href="{{ route('inscription') }}">Inscrivez-vous</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -77,7 +77,7 @@
                     <h2>Le cabinet leader en recrutement et dans l'approche directe des cadres confirmés du Sénégal, de
                         l’Afrique de l’Ouest et du Continent Africain.</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">Inscription</a>
+                        <a target="_blank" href="{{ route('inscription') }}" class="btn-get-started">Inscription</a>
                         <a href="https://youtu.be/ehAo1DgUP94" class="glightbox btn-watch-video"><i
                                 class="bi bi-play-circle"></i><span>Regarder la vidéo</span></a>
                     </div>
@@ -221,7 +221,7 @@
                                             visible aux entreprises qui recrutent activement.
                                         </p>
                                         <hr>
-                                        <a href="#about" class="btn-get-started scrollto">Inscription</a>
+                                        <a target="_blank" href="{{ route('inscription') }}" class="btn-get-started scrollto">Inscription</a>
                                     </div>
                                 </li>
 
@@ -286,7 +286,7 @@
                         </p>
                     </div>
                     <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#">Inscrivez - vous</a>
+                        <a class="cta-btn align-middle" target="_blank" href="{{ route('inscription') }}">Inscrivez - vous</a>
                     </div>
                 </div>
 
