@@ -16,7 +16,7 @@
 
             <li class="step-item {{ $step === 2 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 2]) }}">
-                    Personne morale
+                    Mon entreprise
                 </a>
             </li>
 
