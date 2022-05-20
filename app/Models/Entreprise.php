@@ -83,4 +83,9 @@ class Entreprise extends Model
             $this->attributes['logo'] = $file->getClientOriginalExtension();
         }
     }
+
+    public function setPasswordAttribute($password) 
+    {
+        $this->attributes['password'] = \bcrypt($password);
+    }
 }
