@@ -23,7 +23,7 @@ class EntrepriseRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->step == '1') {
+        if($this->step == 1) {
             return [
                 'nom'         => 'required',
                 'ninea'       => 'required',
@@ -36,29 +36,13 @@ class EntrepriseRequest extends FormRequest
             ];
         }
 
-        if($this->step == '2') {
+        if($this->step == 2) {
             return [
-                'training.*.formation' => 'required',
-                'training.*.etablissement' => 'required',
-                'training.*.ville' => 'required',
-                'training.*.debut_mois' => 'required',
-                'training.*.debut_annee' => 'required',
-                'training.*.fin_mois' => 'required',
-                'training.*.fin_annee' => 'required',
-                'training.*.description' => 'required',
-            ];
-        }
-
-        if($this->step == '3') {
-            return [
-                'pro_experience.*.poste' => 'required',
-                'pro_experience.*.employeur' => 'required',
-                'pro_experience.*.ville' => 'required',
-                'pro_experience.*.debut_mois' => 'required',
-                'pro_experience.*.debut_annee' => 'required',
-                'pro_experience.*.fin_mois' => 'required',
-                'pro_experience.*.fin_annee' => 'required',
-                'pro_experience.*.description' => 'required',
+                'gender' => 'required|in:mr,mrs',
+                'prenom' => 'required',
+                'nomfamille' => 'required',
+                'email' => 'required',
+                'password' => 'required|min:9|confirmed',
             ];
         }
     }

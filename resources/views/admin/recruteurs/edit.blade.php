@@ -10,25 +10,19 @@
 
             <li class="step-item {{ $step === 1 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 1]) }}">
-                    Informations personnelles
+                    Mon entreprise
                 </a>
             </li>
 
             <li class="step-item {{ $step === 2 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 2]) }}">
-                    Mon entreprise
+                    Informations personnelles
                 </a>
             </li>
 
             <li class="step-item {{ $step === 3 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 3]) }}">
-                    Personne morale
-                </a>
-            </li>
-
-            <li class="step-item {{ $step === 4 ? 'active' : '' }}">
-                <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 4]) }}">
-                    Personne morale
+                    Visualisation
                 </a>
             </li>
         </ul>

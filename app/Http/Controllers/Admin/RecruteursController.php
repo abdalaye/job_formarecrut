@@ -83,7 +83,21 @@ class RecruteursController extends Controller
 
     public function step2(int $id, EntrepriseRequest $request) 
     {
-        //
+        $recruteur   = $this->entrepriseRepo->find($id);
+        
+        $currentStep = (int) $request->step;
+
+        $updated     = $recruteur->update($request->validated());
+
+
+        if($updated) {
+            return redirect()
+            ->route("admin.recruteurs.edit", [
+                'entreprise' => $recruteur->id, 
+                'step' => $request->action === 'next' ? $currentStep + 1 : $currentStep, 
+                'hash' => sha1($recruteur->id),
+            ])->with('success', __('actions.update.success'));
+        }
     }
 
     public function step3(int $id, EntrepriseRequest $request) 

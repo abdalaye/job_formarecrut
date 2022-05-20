@@ -7,7 +7,7 @@
             <!-- Simple List -->
             <div id="simpleList" class="list-group">
                 @foreach ($donnees as $etudeRange)
-                    <div class="list-group-item justify-content-start py-1" style="cursor: pointer;"
+                    <div class="list-group-item justify-content-start py-1" style="cursor: grabbing;"
                         data-id="{{ $etudeRange->id }}" id="elt{{ $loop->index }}">
                         <i class="fas fa-sort px-2"></i>
                         {{ $etudeRange->rang }}.
