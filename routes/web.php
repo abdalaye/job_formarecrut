@@ -91,7 +91,6 @@ Route::middleware(['auth'])->group(function () {
         ])->name('candidats.experiences.destroy');
 
 
-
         Route::post('candidats/{candidat}/competences/create', [
             \App\Http\Controllers\Admin\CandidatCompetenceController::class, 'store'
         ])->name('candidats.competences.store');
@@ -106,6 +105,9 @@ Route::middleware(['auth'])->group(function () {
         ])->name('candidats.competences.destroy');
 
 
+        
+
+
         Route::get("recruteurs/complets", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('recruteurs.actifs');
         Route::get("recruteurs/incomplets", [App\Http\Controllers\Admin\RecruteursController::class, 'inactifs'])->name('recruteurs.inactifs');
         Route::get("recruteurs/{entreprise}/profil", [App\Http\Controllers\Admin\RecruteursController::class, 'show'])->name('recruteurs.show');
@@ -113,6 +115,20 @@ Route::middleware(['auth'])->group(function () {
         Route::put("recruteurs/{entreprise}/step1", [App\Http\Controllers\Admin\RecruteursController::class, 'step1'])->name('recruteurs.step1');
         Route::put("recruteurs/{entreprise}/step2", [App\Http\Controllers\Admin\RecruteursController::class, 'step2'])->name('recruteurs.step2');
         Route::put("recruteurs/{entreprise}/step3", [App\Http\Controllers\Admin\RecruteursController::class, 'step3'])->name('recruteurs.step3');
+
+
+        Route::post('recruteurs/{entreprise}/offres/create', [
+            \App\Http\Controllers\Admin\EntrepriseOffreController::class, 'store'
+        ])->name('recruteurs.offres.store');
+
+
+        Route::put('recruteurs/{entreprise}/offre/{offre}/update', [
+            \App\Http\Controllers\Admin\EntrepriseOffreController::class, 'update'
+        ])->name('recruteurs.offres.update');
+
+        Route::delete('recruteurs/{entreprise}/offre/{offre}/destroy', [
+            \App\Http\Controllers\Admin\EntrepriseOffreController::class, 'destroy'
+        ])->name('recruteurs.offres.destroy');
     });
 
     Route::prefix("collaborateurs")

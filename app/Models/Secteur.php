@@ -17,4 +17,9 @@ class Secteur extends Model
     {
         return $this->belongsToMany(Experience::class);
     }
+
+    public function offres() 
+    {
+        return $this->hasMany(Offre::class);
+    }
 }

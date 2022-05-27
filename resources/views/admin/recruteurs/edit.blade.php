@@ -22,6 +22,12 @@
 
             <li class="step-item {{ $step === 3 ? 'active' : '' }}">
                 <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 3]) }}">
+                    Mes offres
+                </a>
+            </li>
+
+            <li class="step-item {{ $step === 4 ? 'active' : '' }}">
+                <a href="{{ route('admin.recruteurs.edit', ['entreprise' => $recruteur->id, 'step' => 3]) }}">
                     Visualisation
                 </a>
             </li>

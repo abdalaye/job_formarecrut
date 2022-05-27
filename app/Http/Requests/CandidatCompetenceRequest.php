@@ -28,4 +28,6 @@ class CandidatCompetenceRequest extends FormRequest
             'niveau_competence_id' => 'required|exists:niveau_competences,id',
         ];
     }
+
+    
 }

@@ -28,6 +28,11 @@ class Entreprise extends Model
         return $this->belongsTo(Abonnement::class);
     }
 
+    public function offres() 
+    {
+        return $this->hasMany(Offre::class);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('statut', '1');
