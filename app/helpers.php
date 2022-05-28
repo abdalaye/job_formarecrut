@@ -76,3 +76,28 @@ if(! function_exists('keyedSelect')) {
         }
     }
 }
+
+if(! function_exists('to_french_date')) {
+    function to_french_date($date, $options = []) {
+
+        $defaultOptions = [
+            'time' => false,
+            'prefix' => 'Le',
+            'format' => 'd/m/Y',
+        ];
+
+        $options = array_merge($defaultOptions, $options);
+
+        $date = carbon($date)->format($options['format'] . ($options['time'] ? ' \à H:i' : ''));
+
+        return sprintf("%s %s", $options['prefix'], $date);
+    }
+}
+
+if(! function_exists('carbon')) {
+    function carbon($date = null) {
+        $date = is_null($date) ? now() : $date;
+        
+        return \Illuminate\Support\Carbon::parse($date);
+    }
+}

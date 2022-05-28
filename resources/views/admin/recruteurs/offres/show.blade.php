@@ -27,7 +27,7 @@
 
                         <div class="d-flex justify-content-between align-items-center pb-3">
                             <strong class="w-50">Date d'expiration</strong>
-                            <div class="text-left pl-2 w-50 bg-light rounded">Le {{ $offre->expires_at }}</div>
+                            <div class="text-left pl-2 w-50 bg-light rounded">{{ to_french_date($offre->expires_at) }}</div>
                         </div>
                     </div>
                 </div>
