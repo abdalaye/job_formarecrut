@@ -20,4 +20,9 @@ class Offre extends Model
     {
         return $this->belongsTo(Secteur::class);
     }
+
+    public function isExpired() 
+    {
+        return \carbon($this->expires_at)->isPast();
+    }
 }
