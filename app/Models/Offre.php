@@ -11,9 +11,6 @@ class Offre extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'expires_at' => 'date',
-    ];
 
     public function entreprise() 
     {

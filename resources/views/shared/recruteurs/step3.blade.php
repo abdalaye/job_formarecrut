@@ -41,7 +41,7 @@ dump($errors->all())
     <td>#{{ $loop->index + 1 }}</td>
     <td>{{ $offre->titre }}</td>
     <td>{{ $offre->description }}</td>
-    <td>{{ $offre->expires_at->diffForHumans() }}</td>
+    <td>{{ $offre->expires_at }}</td>
     <td>{{ $offre->secteur->name ?? '---' }}</td>
     <td class="text-center">
         <a href="#" data-toggle="modal" data-target="#showOffre{{ $offre->id }}" class="btn btn-light btn-xs"><i class="fa fa-eye"></i></a>
