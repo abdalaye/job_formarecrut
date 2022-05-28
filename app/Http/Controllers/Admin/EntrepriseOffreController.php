@@ -35,11 +35,11 @@ class EntrepriseOffreController extends Controller
 
     public function destroy(Entreprise $entreprise, Offre $offre)
     {
-        $offre = $entreprise->competences()->where('id', $offre->id)->firstOrFail();
+        $offre = $entreprise->offres()->where('id', $offre->id)->firstOrFail();
 
         $offre->delete();
         
-        return redirect()->route('admin.recruteurs.edit', ['entreprise' => $entreprise->id, 'step' => 4, 'hash' => sha1($entreprise->id)])
+        return redirect()->route('admin.recruteurs.edit', ['entreprise' => $entreprise->id, 'step' => 3, 'hash' => sha1($entreprise->id)])
         ->with('success', 'Compétence supprimée.');   
     }
 }

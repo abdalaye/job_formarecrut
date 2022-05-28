@@ -11,7 +11,6 @@ class Offre extends Model
 
     protected $guarded = ['id'];
 
-
     public function entreprise() 
     {
         return $this->belongsTo(Entreprise::class);
