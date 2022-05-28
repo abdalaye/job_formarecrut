@@ -16,10 +16,17 @@
                             <strong class="w-50">Titre</strong>
                             <div class="text-left pl-2 w-50 bg-light rounded">{{ $offre->titre }}</div>
                         </div>
+
                         <div class="d-flex justify-content-between align-items-center pb-3">
                             <strong class="w-50">Description</strong>
                             <div class="text-left pl-2 w-50 bg-light rounded">{{ $offre->description }}</div>
                         </div>
+
+                        <div class="d-flex justify-content-between align-items-center pb-3">
+                            <strong class="w-50">Adresse</strong>
+                            <div class="text-left pl-2 w-50 bg-light rounded">{{ $offre->address }}</div>
+                        </div>
+
                         <div class="d-flex justify-content-between align-items-center pb-3">
                             <strong class="w-50">Secteur d'activité</strong>
                             <div class="text-left pl-2 w-50 bg-light rounded">{{ $offre->secteur->name ?? '---' }}</div>

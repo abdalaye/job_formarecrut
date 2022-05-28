@@ -13,6 +13,13 @@
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col-12">
+        <x-field name="address" :validation="true" required>Adresse</x-field>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-12">
         <div class="form-group">

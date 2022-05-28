@@ -28,6 +28,7 @@ class EntrepriseOffreRequest extends FormRequest
             'description' => 'required|string',
             'secteur_id'  => 'required',
             'expires_at'  => 'required|date',
+            'address'     => 'required|string',
         ];
     }
 
@@ -44,6 +45,7 @@ class EntrepriseOffreRequest extends FormRequest
             'secteur_id.required' => 'Vous devez indiquer le secteur',
             'expires_at.required' => "Vous devez indiquer la date d'expiration",
             'expires_at.date' => "Le date d'expiration n'est pas valide.",
+            'address.required' => "Vous devez indiquer l'adresse",
         ];
     }
 }

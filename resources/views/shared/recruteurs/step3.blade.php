@@ -24,6 +24,7 @@
     <td>N°</td>
     <td>Titre</td>
     <td>Description</td>
+    <td>Adresse</td>
     <td>Date d'expiration</td>
     <td>Secteur d'activité</td>
     <td class="text-center">Actions</td>
@@ -37,6 +38,7 @@
     <td>#{{ $loop->index + 1 }}</td>
     <td>{{ $offre->titre }}</td>
     <td>{{ $offre->description }}</td>
+    <td>{{ $offre->address }}</td>
     <td>{{ carbon($offre->expires_at)->diffForHumans() }}</td>
     <td>{{ $offre->secteur->name ?? '---' }}</td>
     <td class="text-center">
