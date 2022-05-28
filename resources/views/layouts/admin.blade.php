@@ -164,6 +164,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script>
             $('.select2').select2();
             flatpickr('input[type="date"]', { locale: 'fr'});
+            flatpickr('input[type="datetime-local"]', { locale: 'fr', dateFormat: 'Y-m-d H:i', enableTime: true });
+
         </script>
     </body>
 </html>

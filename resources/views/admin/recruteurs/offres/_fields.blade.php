@@ -34,7 +34,7 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            <x-field name="expires_at" :validation="true" type="date" required>Date d'expiration</x-field>
+            <x-field name="expires_at" type="date" :validation="true" required>Date d'expiration</x-field>
         </div>
     </div>
 </div>

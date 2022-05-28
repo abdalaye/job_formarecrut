@@ -12,7 +12,7 @@ class Offre extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'expires_at' => 'datetime',
+        'expires_at' => 'date',
     ];
 
     public function entreprise() 

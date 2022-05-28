@@ -17,7 +17,7 @@ class CreateOffresTable extends Migration
             $table->id();
             $table->string('titre');
             $table->longText('description');
-            $table->dateTime('expires_at')->nullable();
+            $table->date('expires_at')->nullable();
 
             $table->foreignId('entreprise_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('secteur_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
