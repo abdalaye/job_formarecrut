@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EntrepriseOffreRequest extends FormRequest
+class OffreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,7 @@ class EntrepriseOffreRequest extends FormRequest
             'titre'       => 'required|string',
             'description' => 'required|string',
             'secteur_id'  => 'required',
+            'entreprise_id'  => 'required',
             'expires_at'  => 'required|date|after:'.now()->format("Y-m-d"),
             'address'     => 'required|string',
         ];

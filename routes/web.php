@@ -53,6 +53,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post("ranger-elements/{entity}", [App\Http\Controllers\Admin\NiveauEtudesController::class, 'range'])->name("range.elements");
 
         });
+        Route::resource("offres", App\Http\Controllers\Admin\OffresController::class);
+            Route::get("offres-expirees", [App\Http\Controllers\Admin\OffresController::class, 'expired'])->name("offres.expired");
         Route::resource("users", App\Http\Controllers\Admin\UsersController::class);
         Route::get("users-incomplets", [App\Http\Controllers\Admin\UsersController::class, 'inactifs'])->name("users.inactifs");
 
@@ -105,7 +107,7 @@ Route::middleware(['auth'])->group(function () {
         ])->name('candidats.competences.destroy');
 
 
-        
+
 
 
         Route::get("recruteurs/complets", [App\Http\Controllers\Admin\RecruteursController::class, 'actifs'])->name('recruteurs.actifs');

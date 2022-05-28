@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="addOffre" tabindex="-1" role="dialog" aria-labelledby="addOffre" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         {!! Form::model($offre, ['method' => 'POST', 'route' => ['admin.recruteurs.offres.store', ['entreprise' => $recruteur->id]], 'class' => 'modal-content']) !!}
             <div class="modal-header">
                 <h5 class="modal-title">Ajouter une nouvelle offre professionnelle</h5>

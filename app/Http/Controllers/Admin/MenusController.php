@@ -57,6 +57,25 @@ class MenusController extends Controller
                     ]
                 ],
                 [
+                    "name" => "Offres",
+                    "fa" => "fa-folder-open",
+                    // "withoutPrefix" => true,
+                    // "variableCount" => "_nombre_depots_menu",
+                    "refs" => ['offres'],
+                    "items" => [
+                        [
+                            "name" => "Offres publiées",
+                            "route" => "admin.offres.index",
+                            // "variableCount" => "_nombre_brouillons_menu",
+                        ],
+                        [
+                            "name" => "Offres expirées",
+                            "route" => "admin.offres.expired",
+                            // "variableCount" => "_nombre_soumis_menu",
+                        ]
+                    ]
+                ],
+                [
                     "name" => "Candidats",
                     "fa" => "fa-users",
                     // "withoutPrefix" => true,

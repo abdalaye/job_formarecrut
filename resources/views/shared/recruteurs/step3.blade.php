@@ -23,7 +23,7 @@
 <tr>
     <td>N°</td>
     <td>Titre</td>
-    <td>Description</td>
+    {{-- <td>Description</td> --}}
     <td>Adresse</td>
     <td>Date d'expiration</td>
     <td>Secteur d'activité</td>
@@ -37,7 +37,7 @@
 <tr>
     <td>#{{ $loop->index + 1 }}</td>
     <td>{{ $offre->titre }}</td>
-    <td>{{ $offre->description }}</td>
+    {{-- <td>{{ $offre->description }}</td> --}}
     <td>{{ $offre->address }}</td>
     <td>{{ carbon($offre->expires_at)->diffForHumans() }}</td>
     <td>{{ $offre->secteur->name ?? '---' }}</td>
@@ -45,10 +45,10 @@
         <a href="#" data-toggle="modal" data-target="#showOffre{{ $offre->id }}" class="btn btn-light btn-xs"><i class="fa fa-eye"></i></a>
         <a href="#" data-toggle="modal" data-target="#editOffre{{ $offre->id }}" class="btn btn-light btn-xs"><i class="fa fa-edit"></i></a>
 
-        <x-form-link 
-            onclick="return confirm('Êtes vous sûr.e ?')" 
-            method="DELETE" 
-            url="{{ route('admin.recruteurs.offres.destroy', ['entreprise' => $recruteur->id, 'offre' => $offre->id]) }}" 
+        <x-form-link
+            onclick="return confirm('Êtes vous sûr.e ?')"
+            method="DELETE"
+            url="{{ route('admin.recruteurs.offres.destroy', ['entreprise' => $recruteur->id, 'offre' => $offre->id]) }}"
             class="btn btn-light text-danger btn-xs"
         >
             <i class="fa fa-trash"></i>
@@ -60,7 +60,7 @@
 
     </td>
 </tr>
-@empty 
+@empty
 <tr>
     <td class="text-center" colspan="8">Aucune offre professionnelle n'a été ajoutée pour le moment...</td>
 </tr>

@@ -10,18 +10,19 @@ class Offre extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['entreprise', 'secteur'];
 
-    public function entreprise() 
+    public function entreprise()
     {
         return $this->belongsTo(Entreprise::class);
     }
 
-    public function secteur() 
+    public function secteur()
     {
         return $this->belongsTo(Secteur::class);
     }
 
-    public function isExpired() 
+    public function isExpired()
     {
         return \carbon($this->expires_at)->isPast();
     }
@@ -29,5 +30,10 @@ class Offre extends Model
     public function scopeExpired($query)
     {
         return $query->where('expires_at', '<', now());
+    }
+
+    public function scopeNotExpired($query)
+    {
+        return $query->where('expires_at', '>=', now());
     }
 }

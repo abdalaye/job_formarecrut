@@ -23,14 +23,14 @@ class EntrepriseOffreController extends Controller
         ->with('success', 'Offre ajoutée avec succès.');
     }
 
-    public function update(EntrepriseOffreRequest $request, Entreprise $entreprise, Offre $offre) 
+    public function update(EntrepriseOffreRequest $request, Entreprise $entreprise, Offre $offre)
     {
         $offre = $entreprise->offres()->where('id', $offre->id)->firstOrFail();
 
         $offre->update($request->validated());
 
         return redirect()->route('admin.recruteurs.edit', ['entreprise' => $entreprise->id, 'step' => 3, 'hash' => sha1($entreprise->id)])
-        ->with('success', 'Compétence modifiée avec succès.');
+        ->with('success', 'Offre modifiée avec succès.');
     }
 
     public function destroy(Entreprise $entreprise, Offre $offre)
@@ -38,8 +38,8 @@ class EntrepriseOffreController extends Controller
         $offre = $entreprise->offres()->where('id', $offre->id)->firstOrFail();
 
         $offre->delete();
-        
+
         return redirect()->route('admin.recruteurs.edit', ['entreprise' => $entreprise->id, 'step' => 3, 'hash' => sha1($entreprise->id)])
-        ->with('success', 'Compétence supprimée.');   
+        ->with('success', 'Offre supprimée.');
     }
 }
