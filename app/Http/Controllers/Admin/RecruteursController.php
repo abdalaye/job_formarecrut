@@ -50,11 +50,18 @@ class RecruteursController extends Controller
 
         $step = (int) request('step', 1);
 
+        $titles = [
+            '1' => 'Mon entreprise',
+            '2' => 'Informations personnelles',
+            '3' => 'Mes offres',
+            '4' => 'Visualisation',
+        ];
+
         if(empty($recruteur)) {
             redirect()->route('admin.recruteurs.actifs')->with('error', 'recruteur introuvable.');
         }
 
-        return view('admin.recruteurs.edit', compact('recruteur', 'step'));
+        return view('admin.recruteurs.edit', compact('recruteur', 'step', 'titles'));
     }
 
     public function step1(EntrepriseRequest $request, int $id)

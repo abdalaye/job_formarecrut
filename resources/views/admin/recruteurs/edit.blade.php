@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Recruteurs - Visualisation profil')
+@section('title', 'Recruteurs - ' . $titles[(string) $step])
 
 @section('content')
     @section('actions')
