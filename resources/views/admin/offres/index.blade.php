@@ -6,7 +6,7 @@
 @section('content')
 
     @section('actions')
-    <a href="{{ route('admin.offres.create') }}" class="btn btn-primary text-white rounded">Ajouter une nouvelle</a>
+    <a href="{{ route('admin.offres.create') }}" class="btn btn-primary text-white rounded">Ajouter une offre</a>
     @endsection
 
     @section('tableHeader')
