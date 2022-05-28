@@ -25,4 +25,9 @@ class Offre extends Model
     {
         return \carbon($this->expires_at)->isPast();
     }
+
+    public function scopeExpired($query)
+    {
+        return $query->where('expires_at', '<', now());
+    }
 }
